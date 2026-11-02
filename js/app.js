@@ -55,6 +55,7 @@
         if (e.target.checked) h.push(n);
         guarda.escribir("lecciones-hechas", h);
       });
+      app.querySelectorAll("[data-decir]").forEach(el => el.insertAdjacentHTML("afterend", " " + AUDIO.boton(el.dataset.decir, el.dataset.tr, "Escuchar")));
       app.querySelectorAll(".repetir").forEach(b => b.addEventListener("click", () => {
         const svg = b.closest("figure").querySelector("svg"); const copia = svg.cloneNode(true); svg.replaceWith(copia);
       }));
@@ -70,14 +71,15 @@
       <div class="letras">${C.letras.map(l => `
         <div class="letra-card ${l.leccion ? "aprendida" : ""}">
           <div class="glifo">${l.l}</div>
-          <div class="nombre">${l.nombre} · ${l.valor}</div>
+          <div class="nombre">${l.nombre} · ${l.valor} ${AUDIO.boton(l.he, l.nombre, "Escuchar " + l.nombre)}</div>
           <div class="det">${l.significado} · ${l.tipo}</div>
           <div class="det">${l.astro} · ${l.arcano}</div>
           ${l.leccion ? `<div class="det">Lección ${l.leccion}</div>` : ""}
         </div>`).join("")}</div>
+      <p class="aviso" id="aviso-voz"></p>
       <h2>Calculadora de gematría</h2>
       <p>Escribe una palabra en letras hebreas.</p>
-      <input type="text" id="gem" class="heb" dir="rtl" value="קבלה">
+      <div class="fila"><input type="text" id="gem" class="heb" dir="rtl" value="קבלה" style="flex:1"><button class="boton secundario" id="gem-oir" type="button">🔊 Escuchar</button></div>
       <p id="gem-res"></p>`;
     const val = {}; C.letras.forEach(l => val[l.l] = l.valor);
     Object.assign(val, { "ך": 20, "ם": 40, "ן": 50, "ף": 80, "ץ": 90 });
@@ -88,6 +90,8 @@
       document.getElementById("gem-res").textContent = s ? `Valor: ${s} · reducción: ${red(s)}` : "";
     };
     document.getElementById("gem").addEventListener("input", calc); calc();
+    document.getElementById("gem-oir").onclick = () => AUDIO.decir(document.getElementById("gem").value);
+    setTimeout(() => { const a = document.getElementById("aviso-voz"); if (a && !AUDIO.hayHebreo()) a.textContent = "Tu dispositivo no tiene voz hebrea instalada: oirás el nombre en español. En Android o iPhone puedes añadir la voz hebrea en los ajustes de texto a voz."; }, 800);
   }
 
   function rituales() {

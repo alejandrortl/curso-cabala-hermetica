@@ -139,3 +139,7 @@ input[type=date], select { font: inherit; font-size: 1rem; padding: .35rem .5rem
 .filtros { justify-content: space-between; border-top: 1px solid var(--borde); padding-top: .8rem; margin-top: 1.5rem; }
 @media (min-width: 641px) { .tam { order: 3; } .menu { order: 2; } }
 @media (max-width: 640px) { .marca { font-size: .85rem; white-space: nowrap; } .cabecera { gap: .5rem; } }
+
+.altavoz { background: none; border: 1px solid var(--borde); border-radius: 99px; cursor: pointer; font-size: .8rem;
+  padding: .05rem .4rem; line-height: 1.3; vertical-align: middle; }
+.altavoz:hover { border-color: var(--acento); }
