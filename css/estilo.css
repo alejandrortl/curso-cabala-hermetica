@@ -143,3 +143,23 @@ input[type=date], select { font: inherit; font-size: 1rem; padding: .35rem .5rem
 .altavoz { background: none; border: 1px solid var(--borde); border-radius: 99px; cursor: pointer; font-size: .8rem;
   padding: .05rem .4rem; line-height: 1.3; vertical-align: middle; }
 .altavoz:hover { border-color: var(--acento); }
+
+/* Lección 2: el Rayo */
+.rayo .velos path { fill: none; stroke: var(--borde); stroke-width: 2; }
+.rayo .velos text, .rayo .pie-svg { text-anchor: middle; font-family: "EB Garamond", serif; font-size: 15px; fill: var(--suave); }
+.rayo .senderos path { fill: none; stroke: var(--borde); stroke-width: 2; }
+.rayo .relampago { fill: none; stroke: var(--oro); stroke-width: 4; stroke-linejoin: round;
+  stroke-dasharray: 2400; stroke-dashoffset: 2400; animation: rayo 6s ease-in-out .6s forwards; }
+.rayo .s circle { fill: var(--papel); stroke: var(--suave); stroke-width: 2; }
+.rayo .s text { text-anchor: middle; font-family: "EB Garamond", serif; font-size: 18px; font-weight: 600; fill: var(--suave); }
+.rayo .s { animation: enciende .5s ease forwards; }
+.rayo .s1 { animation-delay: .6s; } .rayo .s2 { animation-delay: 1.3s; } .rayo .s3 { animation-delay: 2s; }
+.rayo .s4 { animation-delay: 2.7s; } .rayo .s5 { animation-delay: 3.3s; } .rayo .s6 { animation-delay: 3.8s; }
+.rayo .s7 { animation-delay: 4.3s; } .rayo .s8 { animation-delay: 4.9s; } .rayo .s9 { animation-delay: 5.5s; }
+.rayo .s10 { animation-delay: 6.3s; }
+@keyframes rayo { to { stroke-dashoffset: 0; } }
+@keyframes enciende { to { filter: drop-shadow(0 0 6px #e8c35a); } }
+.rayo .s { --c: var(--papel); }
+.rayo .s circle { transition: fill .4s; animation: llena .5s ease forwards; animation-delay: inherit; }
+@keyframes llena { to { fill: #f3dc94; stroke: var(--oro); } }
+@media (prefers-reduced-motion: reduce) { .rayo .relampago { animation: none; stroke-dashoffset: 0; } .rayo .s, .rayo .s circle { animation: none; } }

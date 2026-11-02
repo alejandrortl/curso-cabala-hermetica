@@ -2,7 +2,7 @@
 window.CURSO = {
   lecciones: [
     { n: 1, titulo: "Fundamentos: las tres Cábalas, historia y masonería", disponible: true },
-    { n: 2, titulo: "Metafísica hermética y cabalística", disponible: false },
+    { n: 2, titulo: "Del Kybalión a la Cábala: de dónde sale todo", disponible: true },
     { n: 3, titulo: "El Árbol de la Vida y la geometría sagrada", disponible: false },
     { n: 4, titulo: "Las 22 letras hebreas a fondo", disponible: false },
     { n: 5, titulo: "Los 22 senderos y los Arcanos Mayores", disponible: false },
@@ -16,7 +16,7 @@ window.CURSO = {
   // Correspondencias de la Golden Dawn (sistema de la baraja Rider-Waite).
   // "leccion": en qué lección se aprende la letra (null = todavía no).
   letras: [
-    { l: "א", nombre: "Alef", he: "אָלֶף",   valor: 1,   tipo: "madre", significado: "buey",          astro: "Aire",       arcano: "0 El Loco",            leccion: null },
+    { l: "א", nombre: "Alef", he: "אָלֶף",   valor: 1,   tipo: "madre", significado: "buey",          astro: "Aire",       arcano: "0 El Loco",            leccion: 2 },
     { l: "ב", nombre: "Bet", he: "בֵּית",    valor: 2,   tipo: "doble", significado: "casa",          astro: "Mercurio",   arcano: "I El Mago",            leccion: 1 },
     { l: "ג", nombre: "Guímel", he: "גִּימֶל", valor: 3,   tipo: "doble", significado: "camello",       astro: "Luna",       arcano: "II La Sacerdotisa",    leccion: null },
     { l: "ד", nombre: "Dálet", he: "דָּלֶת",  valor: 4,   tipo: "doble", significado: "puerta",        astro: "Venus",      arcano: "III La Emperatriz",    leccion: null },
@@ -25,11 +25,11 @@ window.CURSO = {
     { l: "ז", nombre: "Záyin", he: "זַיִן",  valor: 7,   tipo: "simple", significado: "espada",       astro: "Géminis",    arcano: "VI Los Enamorados",    leccion: null },
     { l: "ח", nombre: "Jet", he: "חֵית",    valor: 8,   tipo: "simple", significado: "cerca",        astro: "Cáncer",     arcano: "VII El Carro",         leccion: null },
     { l: "ט", nombre: "Tet", he: "טֵית",    valor: 9,   tipo: "simple", significado: "serpiente",    astro: "Leo",        arcano: "VIII La Fuerza",       leccion: null },
-    { l: "י", nombre: "Yod", he: "יוֹד",    valor: 10,  tipo: "simple", significado: "mano",         astro: "Virgo",      arcano: "IX El Ermitaño",       leccion: null },
+    { l: "י", nombre: "Yod", he: "יוֹד",    valor: 10,  tipo: "simple", significado: "mano",         astro: "Virgo",      arcano: "IX El Ermitaño",       leccion: 2 },
     { l: "כ", nombre: "Kaf", he: "כַּף",    valor: 20,  tipo: "doble", significado: "palma",         astro: "Júpiter",    arcano: "X La Rueda de la Fortuna", leccion: null },
     { l: "ל", nombre: "Lamed", he: "לָמֶד",  valor: 30,  tipo: "simple", significado: "aguijada",     astro: "Libra",      arcano: "XI La Justicia",       leccion: 1 },
-    { l: "מ", nombre: "Mem", he: "מֵם",    valor: 40,  tipo: "madre", significado: "agua",          astro: "Agua",       arcano: "XII El Colgado",       leccion: null },
-    { l: "נ", nombre: "Nun", he: "נוּן",    valor: 50,  tipo: "simple", significado: "pez",          astro: "Escorpio",   arcano: "XIII La Muerte",       leccion: null },
+    { l: "מ", nombre: "Mem", he: "מֵם",    valor: 40,  tipo: "madre", significado: "agua",          astro: "Agua",       arcano: "XII El Colgado",       leccion: 2 },
+    { l: "נ", nombre: "Nun", he: "נוּן",    valor: 50,  tipo: "simple", significado: "pez",          astro: "Escorpio",   arcano: "XIII La Muerte",       leccion: 2 },
     { l: "ס", nombre: "Sámej", he: "סָמֶךְ",  valor: 60,  tipo: "simple", significado: "puntal",       astro: "Sagitario",  arcano: "XIV La Templanza",     leccion: null },
     { l: "ע", nombre: "Áyin", he: "עַיִן",   valor: 70,  tipo: "simple", significado: "ojo",          astro: "Capricornio", arcano: "XV El Diablo",        leccion: null },
     { l: "פ", nombre: "Pe", he: "פֵּא",     valor: 80,  tipo: "doble", significado: "boca",          astro: "Marte",      arcano: "XVI La Torre",         leccion: null },
@@ -56,7 +56,7 @@ window.CURSO = {
 
   rituales: [
     { nombre: "Consagración de la baraja", cuando: "Una sola vez, antes del primer uso", materiales: "Vela, agua, incienso, sal, seda, altar, brújula", estado: "Pendiente de redactar" },
-    { nombre: "Cruz Cabalística", cuando: "Lección 2; al empezar y terminar cada práctica", materiales: "Ninguno", estado: "Lección 2" },
+    { nombre: "Cruz Cabalística", cuando: "Mañana y noche; al empezar y terminar cada práctica", materiales: "Ninguno", estado: "Disponible en la lección 2", enlace: "#/leccion/2" },
     { nombre: "Ritual Menor de Destierro del Pentagrama", cuando: "Lección 3; antes de cada tirada o meditación", materiales: "Brújula; daga opcional", estado: "Lección 3" },
     { nombre: "Vibración de los nombres divinos", cuando: "Lección 4", materiales: "Ninguno", estado: "Lección 4" },
     { nombre: "Apertura y cierre de una lectura", cuando: "Cada vez que uses las cartas", materiales: "Seda, tapete; vela e incienso opcionales", estado: "Lección 5" },

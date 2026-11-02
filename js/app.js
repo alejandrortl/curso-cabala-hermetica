@@ -104,7 +104,7 @@
       <h3>Recomendable</h3><ul class="check">${C.materiales.filter(m => !m.imprescindible).map(li).join("")}</ul>
       <h2>Rituales del curso</h2>
       <table><tr><th>Ritual</th><th>Cuándo</th><th>Materiales</th><th>Estado</th></tr>
-      ${C.rituales.map(r => `<tr><td>${esc(r.nombre)}</td><td>${esc(r.cuando)}</td><td>${esc(r.materiales)}</td><td>${esc(r.estado)}</td></tr>`).join("")}</table>`;
+      ${C.rituales.map(r => `<tr><td>${esc(r.nombre)}</td><td>${esc(r.cuando)}</td><td>${esc(r.materiales)}</td><td>${r.enlace ? `<a href="${r.enlace}">${esc(r.estado)}</a>` : esc(r.estado)}</td></tr>`).join("")}</table>`;
     const t = app.querySelector("table"); const d = document.createElement("div"); d.className = "tabla"; t.parentNode.insertBefore(d, t); d.appendChild(t);
     app.querySelectorAll("input[type=checkbox]").forEach(cb => cb.addEventListener("change", () => {
       guarda.escribir("materiales", [...app.querySelectorAll("input[type=checkbox]:checked")].map(x => x.dataset.id));
