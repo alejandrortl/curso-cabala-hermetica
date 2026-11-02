@@ -107,23 +107,95 @@
     }));
   }
 
+  const TIPOS = ["Estudio", "Ritual", "Meditación", "Tirada", "Sueño", "Sincronicidad", "Reflexión", "Otro"];
+  const hoy = () => { const d = new Date(); d.setMinutes(d.getMinutes() - d.getTimezoneOffset()); return d.toISOString().slice(0, 10); };
+  const fechaLarga = iso => new Date(iso + "T12:00:00").toLocaleDateString("es", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+
   function diario() {
-    const entradas = guarda.leer("diario", []);
+    // Formato antiguo {f, t} -> nuevo {id, fecha, tipo, t}
+    let entradas = guarda.leer("diario", []).map(e => e.fecha ? e : { id: e.f, fecha: new Date(e.f).toISOString().slice(0, 10), tipo: "Estudio", t: e.t });
+    const filtro = guarda.leer("diario-filtro", "Todos");
+    const editando = diario.editando || null;
+    const ed = editando ? entradas.find(e => e.id === editando) : null;
+    const Rec = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const lista = entradas.filter(e => filtro === "Todos" || e.tipo === filtro)
+      .sort((a, b) => (b.fecha + b.id).localeCompare(a.fecha + a.id));
     app.innerHTML = `<h1>Diario de estudio</h1>
       <p>Se guarda solo en este navegador. Exporta de vez en cuando para no perderlo.</p>
-      <textarea id="txt" placeholder="Fecha, práctica, carta, sensaciones…"></textarea>
-      <p><button class="boton" id="add">Guardar entrada</button> <button class="boton secundario" id="exp">Exportar</button></p>
-      <div id="lista">${entradas.slice().reverse().map(e => `<div class="entrada"><div class="fecha">${esc(new Date(e.f).toLocaleString("es"))}</div><div>${esc(e.t).replace(/\n/g, "<br>")}</div></div>`).join("")}</div>`;
+      <div class="form-diario">
+        <div class="fila">
+          <label>Fecha <input type="date" id="fecha" value="${ed ? ed.fecha : hoy()}"></label>
+          <label>Tipo <select id="tipo">${TIPOS.map(t => `<option ${(ed ? ed.tipo : "Estudio") === t ? "selected" : ""}>${t}</option>`).join("")}</select></label>
+        </div>
+        <textarea id="txt" placeholder="Qué practicaste, qué carta salió, qué soñaste, qué sentiste…">${ed ? esc(ed.t) : ""}</textarea>
+        <p class="acciones">
+          <button class="boton" id="add">${ed ? "Guardar cambios" : "Guardar entrada"}</button>
+          ${Rec ? `<button class="boton secundario" id="mic" type="button">🎙 Dictar</button>` : `<span class="aviso">Tu navegador no permite dictar aquí; usa el micrófono del teclado del móvil.</span>`}
+          ${ed ? `<button class="boton secundario" id="cancelar" type="button">Cancelar</button>` : ""}
+          <span id="mic-estado" class="aviso"></span>
+        </p>
+      </div>
+      <div class="fila filtros"><label>Mostrar <select id="filtro">${["Todos", ...TIPOS].map(t => `<option ${filtro === t ? "selected" : ""}>${t}</option>`).join("")}</select></label>
+        <button class="boton secundario" id="exp" type="button">Exportar</button></div>
+      <div id="lista">${lista.map(e => `<div class="entrada"><div class="fecha"><span class="etiqueta">${esc(e.tipo)}</span> ${esc(fechaLarga(e.fecha))}
+        <span class="mini"><a href="#" data-ed="${e.id}">Editar</a> · <a href="#" data-del="${e.id}">Borrar</a></span></div>
+        <div>${esc(e.t).replace(/\n/g, "<br>")}</div></div>`).join("") || "<p>No hay entradas todavía.</p>"}</div>`;
+
+    const txt = document.getElementById("txt");
+    const guardar = () => guarda.escribir("diario", entradas);
     document.getElementById("add").onclick = () => {
-      const t = document.getElementById("txt").value.trim(); if (!t) return;
-      entradas.push({ f: Date.now(), t }); guarda.escribir("diario", entradas); diario();
+      const t = txt.value.trim(); if (!t) return;
+      const datos = { fecha: document.getElementById("fecha").value || hoy(), tipo: document.getElementById("tipo").value, t };
+      if (ed) Object.assign(ed, datos); else entradas.push({ id: Date.now(), ...datos });
+      guardar(); diario.editando = null; diario();
     };
+    const c = document.getElementById("cancelar"); if (c) c.onclick = () => { diario.editando = null; diario(); };
+    document.getElementById("filtro").onchange = e => { guarda.escribir("diario-filtro", e.target.value); diario(); };
+    app.querySelectorAll("[data-ed]").forEach(a => a.onclick = ev => { ev.preventDefault(); diario.editando = +a.dataset.ed; diario(); window.scrollTo(0, 0); });
+    app.querySelectorAll("[data-del]").forEach(a => a.onclick = ev => {
+      ev.preventDefault(); if (!confirm("¿Borrar esta entrada?")) return;
+      entradas = entradas.filter(e => e.id !== +a.dataset.del); guardar(); diario();
+    });
     document.getElementById("exp").onclick = () => {
-      const txt = entradas.map(e => `## ${new Date(e.f).toLocaleString("es")}\n\n${e.t}\n`).join("\n");
-      const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([txt], { type: "text/markdown" }));
+      const orden = entradas.slice().sort((a, b) => (a.fecha + a.id).localeCompare(b.fecha + b.id));
+      const md = orden.map(e => `## ${fechaLarga(e.fecha)} · ${e.tipo}\n\n${e.t}\n`).join("\n");
+      const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([md], { type: "text/markdown" }));
       a.download = "diario-de-estudio.md"; a.click();
     };
+
+    // Dictado por voz
+    const mic = document.getElementById("mic");
+    if (mic && Rec) {
+      let rec = null, base = "";
+      const estado = document.getElementById("mic-estado");
+      mic.onclick = () => {
+        if (rec) { rec.stop(); return; }
+        rec = new Rec(); rec.lang = "es-ES"; rec.continuous = true; rec.interimResults = true;
+        base = txt.value ? txt.value.replace(/\s*$/, " ") : "";
+        rec.onresult = ev => {
+          let fin = "", prov = "";
+          for (let k = ev.resultIndex; k < ev.results.length; k++) {
+            const r = ev.results[k]; if (r.isFinal) fin += r[0].transcript; else prov += r[0].transcript;
+          }
+          if (fin) base += fin.trim() + " ";
+          txt.value = base + prov;
+        };
+        rec.onerror = ev => { estado.textContent = ev.error === "not-allowed" ? "Permite el uso del micrófono para dictar." : "Error de dictado: " + ev.error; };
+        rec.onend = () => { rec = null; mic.textContent = "🎙 Dictar"; mic.classList.remove("grabando"); if (!estado.textContent.startsWith("Error") && !estado.textContent.startsWith("Permite")) estado.textContent = ""; txt.value = base.trim(); };
+        rec.start(); mic.textContent = "⏹ Parar"; mic.classList.add("grabando"); estado.textContent = "Escuchando…";
+      };
+    }
   }
+
+  // Tamaño de letra
+  function aplicaTamano(px) { document.documentElement.style.fontSize = px + "px"; }
+  aplicaTamano(guarda.leer("tamano", 20));
+  document.getElementById("tam").addEventListener("click", ev => {
+    const b = ev.target.closest("button"); if (!b) return;
+    let px = guarda.leer("tamano", 20);
+    px = b.dataset.t === "+" ? Math.min(32, px + 2) : b.dataset.t === "-" ? Math.max(14, px - 2) : 20;
+    guarda.escribir("tamano", px); aplicaTamano(px);
+  });
 
   function ruta() {
     const h = location.hash.replace(/^#\/?/, "");

@@ -25,7 +25,7 @@
   --oro: #d4a94a; --borde: #352f40; --acento: #b99be0; --hecho: #6fc296;
 }
 * { box-sizing: border-box; }
-html { font-size: 18px; }
+html { font-size: 20px; }
 body {
   margin: 0; background: var(--fondo); color: var(--tinta);
   font-family: "EB Garamond", Georgia, serif; line-height: 1.6;
@@ -122,3 +122,20 @@ button.secundario { background: none; color: var(--acento); }
 .g4 { background: #2f2f3a; } .g5 { background: #5b3a7a; } .g6 { background: #9a7420; }
 .leyenda { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .5rem; font-size: .75rem; }
 .leyenda span { color: #fff; padding: .05rem .5rem; border-radius: 99px; }
+
+/* Tamaño de letra y diario */
+.tam { display: flex; gap: 2px; }
+.tam button { font: inherit; font-size: .8rem; background: none; border: 1px solid var(--borde); color: var(--tinta);
+  border-radius: 4px; padding: .1rem .4rem; cursor: pointer; min-width: 2rem; }
+.fila { display: flex; flex-wrap: wrap; gap: .8rem; align-items: end; margin: .6rem 0; }
+.fila label { display: flex; flex-direction: column; font-size: .85rem; color: var(--suave); }
+input[type=date], select { font: inherit; font-size: 1rem; padding: .35rem .5rem; border: 1px solid var(--borde);
+  border-radius: 6px; background: var(--papel); color: var(--tinta); }
+.acciones { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
+.aviso { font-size: .85rem; color: var(--suave); }
+.grabando { border-color: #b3261e !important; color: #b3261e !important; animation: pulso 1.2s infinite; }
+@keyframes pulso { 50% { opacity: .55; } }
+.entrada .mini { float: right; font-size: .8rem; }
+.filtros { justify-content: space-between; border-top: 1px solid var(--borde); padding-top: .8rem; margin-top: 1.5rem; }
+@media (min-width: 641px) { .tam { order: 3; } .menu { order: 2; } }
+@media (max-width: 640px) { .marca { font-size: .85rem; white-space: nowrap; } .cabecera { gap: .5rem; } }
