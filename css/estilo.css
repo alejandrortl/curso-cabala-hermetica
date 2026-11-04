@@ -25,7 +25,7 @@
   --oro: #d4a94a; --borde: #352f40; --acento: #b99be0; --hecho: #6fc296;
 }
 * { box-sizing: border-box; }
-html { font-size: 20px; }
+html { font-size: 20px; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 body {
   margin: 0; background: var(--fondo); color: var(--tinta);
   font-family: "EB Garamond", Georgia, serif; line-height: 1.6;

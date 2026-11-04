@@ -221,7 +221,7 @@
   document.getElementById("tam").addEventListener("click", ev => {
     const b = ev.target.closest("button"); if (!b) return;
     let px = guarda.leer("tamano", 20);
-    px = b.dataset.t === "+" ? Math.min(32, px + 2) : b.dataset.t === "-" ? Math.max(14, px - 2) : 20;
+    px = b.dataset.t === "+" ? Math.min(36, px + 3) : b.dataset.t === "-" ? Math.max(14, px - 3) : 20;
     guarda.escribir("tamano", px); aplicaTamano(px);
   });
 
