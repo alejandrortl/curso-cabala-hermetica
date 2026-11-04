@@ -163,3 +163,10 @@ input[type=date], select { font: inherit; font-size: 1rem; padding: .35rem .5rem
 .rayo .s circle { transition: fill .4s; animation: llena .5s ease forwards; animation-delay: inherit; }
 @keyframes llena { to { fill: #f3dc94; stroke: var(--oro); } }
 @media (prefers-reduced-motion: reduce) { .rayo .relampago { animation: none; stroke-dashoffset: 0; } .rayo .s, .rayo .s circle { animation: none; } }
+
+/* Reproductor de meditaciones */
+.meditacion { background: var(--papel); border: 1px solid var(--oro); border-radius: 8px; padding: .8rem 1rem; margin: 1.2rem 0; }
+.meditacion .med-cab { margin-bottom: .3rem; }
+.meditacion .m-paso { font-size: 1.15rem; line-height: 1.5; min-height: 3em; }
+.meditacion details { margin-top: .6rem; font-size: .9rem; }
+.meditacion input[type=range] { width: 9rem; }

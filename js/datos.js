@@ -40,6 +40,39 @@ window.CURSO = {
     { l: "ת", nombre: "Tav", he: "תָּו",    valor: 400, tipo: "doble", significado: "marca",         astro: "Saturno",    arcano: "XXI El Mundo",         leccion: null }
   ],
 
+
+  // Meditaciones guiadas: cada paso se lee en voz alta y después deja "pausa" segundos de silencio.
+  meditaciones: [
+    { id: "cruz", leccion: 2, titulo: "Cruz Cabalística guiada", resumen: "Unos 5 minutos. De pie, mirando al Este.",
+      pasos: [
+        { texto: "Ponte de pie, mirando al Este. Deja los brazos sueltos a los lados del cuerpo. Respira despacio por la nariz, tres o cuatro veces, sin forzar.", pausa: 25 },
+        { texto: "Imagina sobre tu cabeza una esfera de luz blanca y brillante, del tamaño de un balón. Tómate tu tiempo para verla con claridad.", pausa: 25 },
+        { texto: "Llévate la mano a la frente, bajando un poco de esa luz, y di despacio, con voz grave: Atá.", pausa: 15 },
+        { texto: "Baja la mano al pecho, señalando hacia los pies. Imagina que la luz desciende como un rayo por el centro de tu cuerpo hasta el suelo. Di: Maljút.", pausa: 20 },
+        { texto: "Tócate el hombro derecho. Imagina allí un punto de luz. Di: ve Guevurá.", pausa: 15 },
+        { texto: "Tócate el hombro izquierdo. Imagina que un rayo de luz cruza el pecho de un hombro al otro. Di: ve Guedulá.", pausa: 15 },
+        { texto: "Junta las manos ante el pecho. Di: le Olám.", pausa: 10 },
+        { texto: "Y para cerrar, di: Amén.", pausa: 10 },
+        { texto: "Quédate así, sintiendo la cruz de luz dentro de ti: la línea vertical de la cabeza a los pies y la horizontal de hombro a hombro.", pausa: 45 },
+        { texto: "Respira hondo una vez más. Deja que la imagen se disuelva poco a poco, mueve los dedos de las manos y de los pies, y vuelve con calma.", pausa: 10 }
+      ] },
+    { id: "luz", leccion: 2, titulo: "La luz que desciende", resumen: "Unos 10 minutos. Sentado, con la espalda recta.",
+      pasos: [
+        { texto: "Siéntate en una silla con la espalda recta y los pies apoyados en el suelo. Pon las manos sobre los muslos y cierra los ojos.", pausa: 15 },
+        { texto: "Respira por la nariz. Inspira contando hasta cuatro, retén contando hasta dos, espira contando hasta cuatro. Repítelo a tu ritmo.", pausa: 60 },
+        { texto: "Imagina que delante de ti no hay nada. Ni luz ni oscuridad. Es el Ain, la nada que está antes de todo. Descansa en ese silencio.", pausa: 40 },
+        { texto: "Ahora esa nada se vuelve infinita, sin bordes, sin final. Es el Ain Soph.", pausa: 30 },
+        { texto: "Y en ese infinito aparece una luz suave que lo llena todo. Es el Ain Soph Aur, la luz infinita.", pausa: 40 },
+        { texto: "La luz se concentra en un punto brillante justo encima de tu cabeza. Obsérvalo: es el primer punto del Árbol, el origen.", pausa: 40 },
+        { texto: "Desde ese punto, la luz empieza a bajar como el agua de un manantial. Entra por la coronilla y llena tu cabeza, tu frente, tus ojos.", pausa: 40 },
+        { texto: "La luz sigue bajando por el cuello y llena el pecho. Siente el corazón bañado en luz.", pausa: 40 },
+        { texto: "Baja por el vientre, la cadera y las piernas, hasta llegar a los pies. Todo tu cuerpo está lleno de luz.", pausa: 40 },
+        { texto: "Bajo tus pies, la luz forma un punto más denso y oscuro, como la tierra. Es el décimo punto, el mundo material. Siente cómo te sostiene.", pausa: 40 },
+        { texto: "Quédate en silencio, sintiendo la columna de luz que te une desde el origen hasta la tierra.", pausa: 90 },
+        { texto: "Poco a poco, deja que la imagen se desvanezca. Respira hondo, mueve suavemente el cuerpo y, cuando quieras, abre los ojos.", pausa: 10 }
+      ] }
+  ],
+
   materiales: [
     { id: "vela", texto: "Vela blanca y algo para encenderla (Fuego, Yod, Bastos)", imprescindible: true },
     { id: "agua", texto: "Copa o vaso con agua limpia (Agua, He, Copas)", imprescindible: true },

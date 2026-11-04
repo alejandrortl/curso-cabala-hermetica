@@ -56,6 +56,7 @@
         guarda.escribir("lecciones-hechas", h);
       });
       app.querySelectorAll("[data-decir]").forEach(el => el.insertAdjacentHTML("afterend", " " + AUDIO.boton(el.dataset.decir, el.dataset.tr, "Escuchar")));
+      MEDITACION.monta(app);
       app.querySelectorAll(".repetir").forEach(b => b.addEventListener("click", () => {
         const svg = b.closest("figure").querySelector("svg"); const copia = svg.cloneNode(true); svg.replaceWith(copia);
       }));
@@ -104,7 +105,11 @@
       <h3>Recomendable</h3><ul class="check">${C.materiales.filter(m => !m.imprescindible).map(li).join("")}</ul>
       <h2>Rituales del curso</h2>
       <table><tr><th>Ritual</th><th>Cuándo</th><th>Materiales</th><th>Estado</th></tr>
-      ${C.rituales.map(r => `<tr><td>${esc(r.nombre)}</td><td>${esc(r.cuando)}</td><td>${esc(r.materiales)}</td><td>${r.enlace ? `<a href="${r.enlace}">${esc(r.estado)}</a>` : esc(r.estado)}</td></tr>`).join("")}</table>`;
+      ${C.rituales.map(r => `<tr><td>${esc(r.nombre)}</td><td>${esc(r.cuando)}</td><td>${esc(r.materiales)}</td><td>${r.enlace ? `<a href="${r.enlace}">${esc(r.estado)}</a>` : esc(r.estado)}</td></tr>`).join("")}</table>
+      <h2>Meditaciones guiadas</h2>
+      <p class="aviso">Cada meditación tiene tres versiones: binaural con voz, solo binaural y solo voz. El tono binaural necesita auriculares.</p>
+      ${(C.meditaciones || []).map(m => `<p><a href="#/leccion/${m.leccion}">Lección ${m.leccion}</a></p><div class="meditacion" data-med="${m.id}"></div>`).join("")}`;
+    MEDITACION.monta(app);
     const t = app.querySelector("table"); const d = document.createElement("div"); d.className = "tabla"; t.parentNode.insertBefore(d, t); d.appendChild(t);
     app.querySelectorAll("input[type=checkbox]").forEach(cb => cb.addEventListener("change", () => {
       guarda.escribir("materiales", [...app.querySelectorAll("input[type=checkbox]:checked")].map(x => x.dataset.id));
