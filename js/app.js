@@ -21,7 +21,7 @@
           ${sig ? `<a href="#/leccion/${sig.n}">Continuar con la lección ${sig.n}</a>` : ""}</div>
         <div class="tarjeta"><h3>Letras</h3><p class="heb" style="font-size:1.6rem">${C.letras.filter(l => l.leccion).map(l => l.l).join(" ")}</p>
           <p>${aprendidas} de 22 aprendidas</p><a href="#/letras">Ver alfabeto</a></div>
-        <div class="tarjeta"><h3>Rituales</h3><p>Antes del primer uso de las cartas: consagración de la baraja.</p><a href="#/rituales">Materiales y rituales</a></div>
+        <div class="tarjeta"><h3>Rituales</h3><p>Antes del primer uso de las cartas: consagración de la baraja.</p><a href="#/ritual/consagracion">Ver el ritual</a> · <a href="#/rituales">Materiales</a></div>
         <div class="tarjeta"><h3>Diario</h3><p>${guarda.leer("diario", []).length} entradas</p><a href="#/diario">Escribir</a></div>
       </div>`;
   }
@@ -55,14 +55,33 @@
         if (e.target.checked) h.push(n);
         guarda.escribir("lecciones-hechas", h);
       });
-      app.querySelectorAll("[data-decir]").forEach(el => el.insertAdjacentHTML("afterend", " " + AUDIO.boton(el.dataset.decir, el.dataset.tr, "Escuchar")));
-      MEDITACION.monta(app);
-      app.querySelectorAll(".repetir").forEach(b => b.addEventListener("click", () => {
-        const svg = b.closest("figure").querySelector("svg"); const copia = svg.cloneNode(true); svg.replaceWith(copia);
-      }));
-      window.scrollTo(0, 0);
+      prepara();
     } catch (e) {
       app.innerHTML = `<p>No se pudo cargar la lección (${esc(e.message)}).</p>`;
+    }
+  }
+
+  // Tras cargar una página de contenido: audio de las palabras, reproductores y animaciones.
+  function prepara() {
+    app.querySelectorAll("[data-decir]").forEach(el => el.insertAdjacentHTML("afterend", " " + AUDIO.boton(el.dataset.decir, el.dataset.tr, "Escuchar")));
+    MEDITACION.monta(app);
+    app.querySelectorAll(".repetir").forEach(b => b.addEventListener("click", () => {
+      const svg = b.closest("figure").querySelector("svg"); const copia = svg.cloneNode(true); svg.replaceWith(copia);
+    }));
+    window.scrollTo(0, 0);
+  }
+
+  async function ritual(id) {
+    if (!/^[a-z-]+$/.test(id || "")) { rituales(); return; }
+    app.innerHTML = "<p>Cargando…</p>";
+    try {
+      const r = await fetch(`rituales/${id}.html`);
+      if (!r.ok) throw new Error(r.status);
+      app.innerHTML = await r.text() + `<div class="navlec"><a href="#/rituales">← Materiales y rituales</a><span></span></div>`;
+      app.querySelectorAll("table").forEach(t => { const d = document.createElement("div"); d.className = "tabla"; t.parentNode.insertBefore(d, t); d.appendChild(t); });
+      prepara();
+    } catch (e) {
+      app.innerHTML = `<p>No se pudo cargar el ritual (${esc(e.message)}).</p>`;
     }
   }
 
@@ -108,7 +127,7 @@
       ${C.rituales.map(r => `<tr><td>${esc(r.nombre)}</td><td>${esc(r.cuando)}</td><td>${esc(r.materiales)}</td><td>${r.enlace ? `<a href="${r.enlace}">${esc(r.estado)}</a>` : esc(r.estado)}</td></tr>`).join("")}</table>
       <h2>Meditaciones guiadas</h2>
       <p class="aviso">Cada meditación tiene tres versiones: binaural con voz, solo binaural y solo voz. El tono binaural necesita auriculares.</p>
-      ${(C.meditaciones || []).map(m => `<p><a href="#/leccion/${m.leccion}">Lección ${m.leccion}</a></p><div class="meditacion" data-med="${m.id}"></div>`).join("")}`;
+      ${(C.meditaciones || []).map(m => `<p>${m.ritual ? `<a href="#/ritual/${m.ritual}">Ver el ritual completo</a>` : `<a href="#/leccion/${m.leccion}">Lección ${m.leccion}</a>`}</p><div class="meditacion" data-med="${m.id}"></div>`).join("")}`;
     MEDITACION.monta(app);
     const t = app.querySelector("table"); const d = document.createElement("div"); d.className = "tabla"; t.parentNode.insertBefore(d, t); d.appendChild(t);
     app.querySelectorAll("input[type=checkbox]").forEach(cb => cb.addEventListener("change", () => {
@@ -209,12 +228,13 @@
   function ruta() {
     const h = location.hash.replace(/^#\/?/, "");
     const [seccion, arg] = h.split("/");
-    document.querySelectorAll(".menu a").forEach(a => a.classList.toggle("activo", a.getAttribute("href") === "#/" + (seccion || "")));
+    document.querySelectorAll(".menu a").forEach(a => a.classList.toggle("activo", a.getAttribute("href") === "#/" + (seccion === "ritual" ? "rituales" : seccion || "")));
     document.getElementById("menu").classList.remove("abierto");
     if (seccion === "lecciones") lecciones();
     else if (seccion === "leccion") leccion(parseInt(arg, 10));
     else if (seccion === "letras") letras();
     else if (seccion === "rituales") rituales();
+    else if (seccion === "ritual") ritual(arg);
     else if (seccion === "diario") diario();
     else inicio();
   }

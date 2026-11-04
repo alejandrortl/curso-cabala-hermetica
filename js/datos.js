@@ -70,6 +70,36 @@ window.CURSO = {
         { texto: "Bajo tus pies, la luz forma un punto más denso y oscuro, como la tierra. Es el décimo punto, el mundo material. Siente cómo te sostiene.", pausa: 40 },
         { texto: "Quédate en silencio, sintiendo la columna de luz que te une desde el origen hasta la tierra.", pausa: 90 },
         { texto: "Poco a poco, deja que la imagen se desvanezca. Respira hondo, mueve suavemente el cuerpo y, cuando quieras, abre los ojos.", pausa: 10 }
+      ] },
+    { id: "consagracion", ritual: "consagracion", titulo: "Consagración de la baraja guiada", resumen: "Unos 30 minutos. De pie ante el altar, mirando al Este.",
+      pasos: [
+        { texto: "Bienvenido a la consagración de tu baraja. Comprueba que el altar está preparado: el incienso al Este, la vela al Sur, la copa de agua al Oeste y la sal al Norte. En el centro, los cinco montones de cartas y el paño de seda.", pausa: 20 },
+        { texto: "Enciende la vela y el incienso. Después colócate al Oeste del altar, mirando al Este.", pausa: 60 },
+        { texto: "Respira despacio por la nariz. Con cada espiración, deja atrás las preocupaciones del día.", pausa: 60 },
+        { texto: "Vamos a abrir con la Cruz Cabalística. Imagina sobre tu cabeza la esfera de luz blanca.", pausa: 20 },
+        { texto: "Llévate la mano a la frente y di: Atá.", pausa: 12 },
+        { texto: "Baja la mano al pecho, la luz desciende hasta los pies. Di: Maljút.", pausa: 15 },
+        { texto: "Hombro derecho: ve Guevurá.", pausa: 12 },
+        { texto: "Hombro izquierdo: ve Guedulá.", pausa: 12 },
+        { texto: "Manos juntas ante el pecho: le Olám. Amén.", pausa: 20 },
+        { texto: "Pon las manos sobre la baraja y declara tu intención en voz alta: Consagro esta baraja como instrumento de estudio, de meditación y de conocimiento de mí mismo. Que sus imágenes me hablen con verdad.", pausa: 30 },
+        { texto: "Fuego. Toma el montón de Bastos y pásalo despacio por encima de la llama, a un palmo de distancia. Di: Por el Fuego te consagro, palo de Bastos. Después déjalo a tu derecha, en el Sur.", pausa: 75 },
+        { texto: "Agua. Toma el montón de Copas. Moja la punta de los dedos y deja caer unas gotas alrededor del montón, no encima. Di: Por el Agua te consagro, palo de Copas. Déjalo en el Oeste.", pausa: 75 },
+        { texto: "Aire. Toma el montón de Espadas y pásalo despacio a través del humo del incienso. Di: Por el Aire te consagro, palo de Espadas. Déjalo en el Este.", pausa: 75 },
+        { texto: "Tierra. Toma el montón de Oros y sostenlo sobre la sal. Esparce una pizca alrededor. Di: Por la Tierra te consagro, palo de Oros. Déjalo en el Norte.", pausa: 75 },
+        { texto: "Ahora los veintidós arcanos mayores. Pásalos por los cuatro elementos en el mismo orden: Fuego, Agua, Aire y Tierra. Al terminar di: Por el Fuego, el Agua, el Aire y la Tierra os consagro, arcanos mayores.", pausa: 120 },
+        { texto: "Reúne los cinco montones en una sola baraja. Sostenla con las dos manos ante el pecho y cierra los ojos.", pausa: 30 },
+        { texto: "Imagina de nuevo la esfera de luz sobre tu cabeza. Deja que la luz baje por tus brazos hasta las cartas.", pausa: 45 },
+        { texto: "Di despacio la invocación: Invoco al Altísimo, para que envíe a Hru, el gran ángel que preside las operaciones de esta sabiduría secreta, a poner su mano invisible sobre estas cartas consagradas, para que por ellas pueda obtener verdadero conocimiento de las cosas ocultas, para gloria de su nombre inefable. Amén.", pausa: 45 },
+        { texto: "Quédate en silencio, sintiendo las cartas cargadas de luz.", pausa: 60 },
+        { texto: "Abre los ojos y baraja muy despacio, mirando cada carta un instante. No las interpretes todavía: solo salúdalas.", pausa: 240 },
+        { texto: "Envuelve la baraja en el paño de seda y guárdala en su caja.", pausa: 40 },
+        { texto: "Cerramos con la Cruz Cabalística. Mano a la frente: Atá.", pausa: 12 },
+        { texto: "Al pecho: Maljút.", pausa: 12 },
+        { texto: "Hombro derecho: ve Guevurá. Hombro izquierdo: ve Guedulá.", pausa: 20 },
+        { texto: "Manos juntas: le Olám. Amén.", pausa: 20 },
+        { texto: "Apaga la vela sofocándola, sin soplar, y deja que el incienso se consuma. Más tarde vierte el agua en una planta y tira la sal con agua corriente.", pausa: 30 },
+        { texto: "La baraja ya está consagrada. Cuando puedas, anota en tu diario la fecha, la hora y cómo te has sentido.", pausa: 5 }
       ] }
   ],
 
@@ -88,7 +118,7 @@ window.CURSO = {
   ],
 
   rituales: [
-    { nombre: "Consagración de la baraja", cuando: "Una sola vez, antes del primer uso", materiales: "Vela, agua, incienso, sal, seda, altar, brújula", estado: "Pendiente de redactar" },
+    { nombre: "Consagración de la baraja", cuando: "Una sola vez, antes del primer uso", materiales: "Vela, agua, incienso, sal, seda, altar, brújula", estado: "Disponible", enlace: "#/ritual/consagracion" },
     { nombre: "Cruz Cabalística", cuando: "Mañana y noche; al empezar y terminar cada práctica", materiales: "Ninguno", estado: "Disponible en la lección 2", enlace: "#/leccion/2" },
     { nombre: "Ritual Menor de Destierro del Pentagrama", cuando: "Lección 3; antes de cada tirada o meditación", materiales: "Brújula; daga opcional", estado: "Lección 3" },
     { nombre: "Vibración de los nombres divinos", cuando: "Lección 4", materiales: "Ninguno", estado: "Lección 4" },

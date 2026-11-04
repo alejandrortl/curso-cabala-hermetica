@@ -170,3 +170,12 @@ input[type=date], select { font: inherit; font-size: 1rem; padding: .35rem .5rem
 .meditacion .m-paso { font-size: 1.15rem; line-height: 1.5; min-height: 3em; }
 .meditacion details { margin-top: .6rem; font-size: .9rem; }
 .meditacion input[type=range] { width: 9rem; }
+
+/* Altar del ritual de consagración */
+.altar { max-width: 420px; }
+.altar .mesa { fill: var(--fondo); stroke: var(--borde); stroke-width: 2; }
+.altar .cardinal { font-size: 15px; fill: var(--oro); letter-spacing: .08em; }
+.altar .objeto circle { fill: var(--fondo); stroke: var(--acento); stroke-width: 2; }
+.altar .objeto text { font-size: 18px; }
+.altar .objeto text.peq { font-size: 12px; }
+.altar .seda { fill: none; stroke: var(--oro); stroke-width: 1.5; stroke-dasharray: 4 3; }
