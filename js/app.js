@@ -65,8 +65,17 @@
   function prepara() {
     app.querySelectorAll("[data-decir]").forEach(el => el.insertAdjacentHTML("afterend", " " + AUDIO.boton(el.dataset.decir, el.dataset.tr, "Escuchar")));
     MEDITACION.monta(app);
+    const animadas = [...app.querySelectorAll(".repetir")].map(b => b.closest("figure"));
+    if ("IntersectionObserver" in window) {
+      const obs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("en-marcha"); obs.unobserve(e.target); } }), { threshold: 0.4 });
+      animadas.forEach(f => obs.observe(f));
+    } else animadas.forEach(f => f.classList.add("en-marcha"));
     app.querySelectorAll(".repetir").forEach(b => b.addEventListener("click", () => {
-      const svg = b.closest("figure").querySelector("svg"); const copia = svg.cloneNode(true); svg.replaceWith(copia);
+      const fig = b.closest("figure"), svg = fig.querySelector("svg");
+      fig.classList.add("en-marcha");
+      svg.querySelectorAll("*").forEach(el => { el.style.animation = "none"; });
+      void svg.getBoundingClientRect();
+      svg.querySelectorAll("*").forEach(el => { el.style.animation = ""; });
     }));
     window.scrollTo(0, 0);
   }
