@@ -41,7 +41,7 @@
     if (!meta || !meta.disponible) { app.innerHTML = `<h1>Lección ${n}</h1><p>Esta lección todavía no está disponible.</p>`; return; }
     app.innerHTML = "<p>Cargando…</p>";
     try {
-      const r = await fetch(`lecciones/leccion-${n}.html`);
+      const r = await fetch(`lecciones/leccion-${n}.html`, { cache: "no-cache" });
       if (!r.ok) throw new Error(r.status);
       const html = await r.text();
       const hechas = guarda.leer("lecciones-hechas", []);
@@ -75,7 +75,7 @@
     if (!/^[a-z-]+$/.test(id || "")) { rituales(); return; }
     app.innerHTML = "<p>Cargando…</p>";
     try {
-      const r = await fetch(`rituales/${id}.html`);
+      const r = await fetch(`rituales/${id}.html`, { cache: "no-cache" });
       if (!r.ok) throw new Error(r.status);
       app.innerHTML = await r.text() + `<div class="navlec"><a href="#/rituales">← Materiales y rituales</a><span></span></div>`;
       app.querySelectorAll("table").forEach(t => { const d = document.createElement("div"); d.className = "tabla"; t.parentNode.insertBefore(d, t); d.appendChild(t); });
