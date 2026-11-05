@@ -36,7 +36,7 @@
       </div>`).join("")}</div>`;
   }
 
-  async function leccion(n) {
+  async function leccion(n, seccionN) {
     const meta = C.lecciones.find(l => l.n === n);
     if (!meta || !meta.disponible) { app.innerHTML = `<h1>Lección ${n}</h1><p>Esta lección todavía no está disponible.</p>`; return; }
     app.innerHTML = "<p>Cargando…</p>";
@@ -55,14 +55,24 @@
         if (e.target.checked) h.push(n);
         guarda.escribir("lecciones-hechas", h);
       });
-      prepara();
+      prepara(seccionN);
     } catch (e) {
       app.innerHTML = `<p>No se pudo cargar la lección (${esc(e.message)}).</p>`;
     }
   }
 
   // Tras cargar una página de contenido: audio de las palabras, reproductores y animaciones.
-  function prepara() {
+  function prepara(seccionN) {
+    const h2s = [...app.querySelectorAll("h2")];
+    if (h2s.length >= 3) {
+      const h1 = app.querySelector("h1");
+      const caja = document.createElement("details");
+      caja.className = "indice-pag"; caja.open = true;
+      caja.innerHTML = `<summary>Índice de esta página</summary><ol>${h2s.map((h, i) => `<li><button type="button" data-ir="${i}">${esc(h.textContent.replace(/^\d+\.\s*/, ""))}</button></li>`).join("")}</ol>`;
+      (h1 || app.firstChild).insertAdjacentElement(h1 ? "afterend" : "beforebegin", caja);
+      caja.addEventListener("click", e => { const b = e.target.closest("[data-ir]"); if (b) h2s[+b.dataset.ir].scrollIntoView({ behavior: "smooth" }); });
+      h2s.forEach(h => { const b = document.createElement("button"); b.type = "button"; b.className = "al-indice"; b.title = "Volver al índice"; b.textContent = "↑ índice"; b.onclick = () => caja.scrollIntoView({ behavior: "smooth" }); h.appendChild(b); });
+    }
     app.querySelectorAll("[data-decir]").forEach(el => el.insertAdjacentHTML("afterend", " " + AUDIO.boton(el.dataset.decir, el.dataset.tr, "Escuchar")));
     MEDITACION.monta(app);
     const animadas = [...app.querySelectorAll(".repetir")].map(b => b.closest("figure"));
@@ -77,10 +87,36 @@
       void svg.getBoundingClientRect();
       svg.querySelectorAll("*").forEach(el => { el.style.animation = ""; });
     }));
+    const destino = seccionN ? h2s[seccionN - 1] : null;
+    if (destino) setTimeout(() => destino.scrollIntoView(), 50); else window.scrollTo(0, 0);
+  }
+
+  async function indice() {
+    app.innerHTML = "<h1>Índice del curso</h1><p>Cargando…</p>";
+    const secciones = async url => {
+      try { const r = await fetch(url, { cache: "no-cache" }); const d = document.createElement("div"); d.innerHTML = await r.text();
+        return [...d.querySelectorAll("h2")].map(h => h.textContent.replace(/^\d+\.\s*/, "")); } catch (e) { return []; }
+    };
+    const disp = C.lecciones.filter(l => l.disponible);
+    const hs = await Promise.all(disp.map(l => secciones(`lecciones/leccion-${l.n}.html`)));
+    const rit = await secciones("rituales/consagracion.html");
+    const hechas = guarda.leer("lecciones-hechas", []);
+    app.innerHTML = `<h1>Índice del curso</h1>
+      <h2>Lecciones</h2>
+      <div class="indice-curso">${C.lecciones.map(l => {
+        const k = disp.indexOf(l);
+        return `<details ${k >= 0 ? "open" : ""} class="${k >= 0 ? "" : "futura"}"><summary>${l.n}. ${esc(l.titulo)} ${hechas.includes(l.n) ? "✓" : k >= 0 ? "" : "<small>(próximamente)</small>"}</summary>
+          ${k >= 0 ? `<ol>${hs[k].map((t, i) => `<li><a href="#/leccion/${l.n}/${i + 1}">${esc(t)}</a></li>`).join("")}</ol>` : ""}</details>`;
+      }).join("")}</div>
+      <h2>Rituales</h2>
+      <div class="indice-curso"><details open><summary><a href="#/ritual/consagracion">Consagración de la baraja</a></summary><ol>${rit.map((t, i) => `<li><a href="#/ritual/consagracion/${i + 1}">${esc(t)}</a></li>`).join("")}</ol></details>
+      <p><a href="#/rituales">Materiales, tabla de rituales y meditaciones guiadas</a></p></div>
+      <h2>Herramientas</h2>
+      <ul><li><a href="#/letras">Las 22 letras hebreas</a>: audio, correspondencias y calculadora de gematría</li><li><a href="#/diario">Diario mágico</a></li></ul>`;
     window.scrollTo(0, 0);
   }
 
-  async function ritual(id) {
+  async function ritual(id, seccionN) {
     if (!/^[a-z-]+$/.test(id || "")) { rituales(); return; }
     app.innerHTML = "<p>Cargando…</p>";
     try {
@@ -88,7 +124,7 @@
       if (!r.ok) throw new Error(r.status);
       app.innerHTML = await r.text() + `<div class="navlec"><a href="#/rituales">← Materiales y rituales</a><span></span></div>`;
       app.querySelectorAll("table").forEach(t => { const d = document.createElement("div"); d.className = "tabla"; t.parentNode.insertBefore(d, t); d.appendChild(t); });
-      prepara();
+      prepara(seccionN);
     } catch (e) {
       app.innerHTML = `<p>No se pudo cargar el ritual (${esc(e.message)}).</p>`;
     }
@@ -240,10 +276,11 @@
     document.querySelectorAll(".menu a").forEach(a => a.classList.toggle("activo", a.getAttribute("href") === "#/" + (seccion === "ritual" ? "rituales" : seccion || "")));
     document.getElementById("menu").classList.remove("abierto");
     if (seccion === "lecciones") lecciones();
-    else if (seccion === "leccion") leccion(parseInt(arg, 10));
+    else if (seccion === "leccion") leccion(parseInt(arg, 10), parseInt(h.split("/")[2], 10) || 0);
     else if (seccion === "letras") letras();
     else if (seccion === "rituales") rituales();
-    else if (seccion === "ritual") ritual(arg);
+    else if (seccion === "ritual") ritual(arg, parseInt(h.split("/")[2], 10) || 0);
+    else if (seccion === "indice") indice();
     else if (seccion === "diario") diario();
     else inicio();
   }

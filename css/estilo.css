@@ -179,3 +179,38 @@ input[type=date], select { font: inherit; font-size: 1rem; padding: .35rem .5rem
 
 /* Las animaciones esperan a que la figura se vea en pantalla */
 figure:not(.en-marcha) svg, figure:not(.en-marcha) svg * { animation-play-state: paused !important; }
+
+/* Índices */
+.indice-pag { background: var(--papel); border: 1px solid var(--borde); border-radius: 8px; padding: .6rem 1rem; margin: 0 0 1.5rem; }
+.indice-pag summary, .indice-curso summary { cursor: pointer; font-weight: 600; color: var(--acento); }
+.indice-pag ol { margin: .5rem 0 0; padding-left: 1.4rem; }
+.indice-pag button { background: none; border: 0; padding: .15rem 0; font: inherit; color: var(--tinta); text-align: left; cursor: pointer; text-decoration: underline; text-decoration-color: var(--borde); }
+.al-indice { margin-left: .6rem; vertical-align: middle; background: none; border: 1px solid var(--borde); border-radius: 99px; font: inherit; font-size: .65rem; font-weight: 400; color: var(--suave); padding: .05rem .5rem; cursor: pointer; }
+.indice-curso details { background: var(--papel); border: 1px solid var(--borde); border-radius: 8px; padding: .6rem 1rem; margin-bottom: .6rem; }
+.indice-curso details.futura summary { color: var(--suave); cursor: default; list-style: none; }
+.indice-curso ol { margin: .4rem 0 0; padding-left: 1.4rem; }
+h2 { scroll-margin-top: 4.5rem; }
+
+/* Diagramas añadidos: línea del tiempo, velos, planos, alma */
+.diagrama text.izq { text-anchor: start; }
+.tiempo .b-jud { fill: var(--oro); fill-opacity: .28; }
+.tiempo .b-cri { fill: var(--acento); fill-opacity: .25; }
+.tiempo .b-her { fill: var(--hecho); fill-opacity: .28; }
+.tiempo .hitos circle { fill: var(--tinta); }
+.tiempo .eje { stroke: var(--suave); stroke-width: 1.2; }
+.velos .v { fill: var(--tinta); fill-opacity: .06; stroke: var(--oro); stroke-width: 1.5; opacity: 0; animation: aparece 1s ease forwards; }
+.velos .v3 { fill-opacity: 1; }
+.velos .v1, .velos .t1 { animation-delay: .3s; } .velos .v2, .velos .t2 { animation-delay: 1.5s; } .velos .v3, .velos .t3 { animation-delay: 2.7s; }
+.velos text { opacity: 0; animation: aparece 1s ease forwards; }
+.velos .punto { fill: #fff; stroke: var(--oro); stroke-width: 2; opacity: 0; animation: aparece .6s ease 4s forwards, late 2s ease-in-out 4.6s infinite; }
+.velos .t4 { animation-delay: 4.3s; }
+@keyframes late { 50% { filter: drop-shadow(0 0 8px #e8c35a); } }
+.planos .borde { stroke: var(--borde); }
+.planos .sep line { stroke: #fff; stroke-opacity: .6; stroke-dasharray: 5 4; }
+.planos text.oscuro { fill: #2a2420; } .planos text.claro { fill: #fffdf8; }
+.alma .cuerpo circle, .alma .cuerpo path { fill: var(--papel); stroke: var(--suave); stroke-width: 2; }
+.alma .zona { stroke: none; }
+.alma .ruach { fill: var(--acento); fill-opacity: .35; }
+.alma .nefesh { fill: #b5703a; fill-opacity: .35; }
+.alma .heb { font-family: "Frank Ruhl Libre", serif; fill: var(--oro); }
+.velos text.dentro { fill: #2a2420; }
