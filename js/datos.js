@@ -11,7 +11,8 @@ window.CURSO = {
     { n: 8, titulo: "Astrología cabalística, simbolismo y religión comparada", disponible: false },
     { n: 9, titulo: "La carta astral: cómo se construye y cómo se lee", disponible: false },
     { n: 10, titulo: "Práctica: tarot, meditación, geometría sagrada y chakras", disponible: false },
-    { n: 11, titulo: "Alquimia y otras tradiciones herméticas", disponible: false }
+    { n: 11, titulo: "Alquimia y otras tradiciones herméticas", disponible: false },
+    { n: 12, titulo: "Simbolismo: cómo leer los símbolos", disponible: false }
   ],
 
   // Correspondencias de la Golden Dawn (sistema de la baraja Rider-Waite).
