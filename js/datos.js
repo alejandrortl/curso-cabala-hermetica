@@ -9,8 +9,9 @@ window.CURSO = {
     { n: 6, titulo: "Los Arcanos Menores", disponible: false },
     { n: 7, titulo: "Numerología y gematría", disponible: false },
     { n: 8, titulo: "Astrología cabalística, simbolismo y religión comparada", disponible: false },
-    { n: 9, titulo: "Práctica: tarot, meditación, geometría sagrada y chakras", disponible: false },
-    { n: 10, titulo: "Alquimia y otras tradiciones herméticas", disponible: false }
+    { n: 9, titulo: "La carta astral: cómo se construye y cómo se lee", disponible: false },
+    { n: 10, titulo: "Práctica: tarot, meditación, geometría sagrada y chakras", disponible: false },
+    { n: 11, titulo: "Alquimia y otras tradiciones herméticas", disponible: false }
   ],
 
   // Correspondencias de la Golden Dawn (sistema de la baraja Rider-Waite).
@@ -123,7 +124,7 @@ window.CURSO = {
     { nombre: "Ritual Menor de Destierro del Pentagrama", cuando: "Lección 3; antes de cada tirada o meditación", materiales: "Brújula; daga opcional", estado: "Lección 3" },
     { nombre: "Vibración de los nombres divinos", cuando: "Lección 4", materiales: "Ninguno", estado: "Lección 4" },
     { nombre: "Apertura y cierre de una lectura", cuando: "Cada vez que uses las cartas", materiales: "Seda, tapete; vela e incienso opcionales", estado: "Lección 5" },
-    { nombre: "Pilar Medio", cuando: "Lección 9", materiales: "Silla de respaldo recto", estado: "Lección 9" },
-    { nombre: "Ritual del Hexagrama", cuando: "Lección 9", materiales: "Brújula; daga opcional", estado: "Lección 9" }
+    { nombre: "Pilar Medio", cuando: "Lección 10", materiales: "Silla de respaldo recto", estado: "Lección 10" },
+    { nombre: "Ritual del Hexagrama", cuando: "Lección 10", materiales: "Brújula; daga opcional", estado: "Lección 10" }
   ]
 };
