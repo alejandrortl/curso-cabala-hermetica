@@ -56,6 +56,7 @@
         guarda.escribir("lecciones-hechas", h);
       });
       prepara(seccionN);
+      cuadroRespuesta(n, meta.titulo);
     } catch (e) {
       app.innerHTML = `<p>No se pudo cargar la lección (${esc(e.message)}).</p>`;
     }
@@ -99,6 +100,37 @@
     }));
     const destino = seccionN ? h2s[seccionN - 1] : null;
     if (destino) setTimeout(() => destino.scrollIntoView(), 50); else window.scrollTo(0, 0);
+  }
+
+  // Cuadro para contestar la pregunta final de la lección dentro de la app.
+  function cuadroRespuesta(n, titulo) {
+    const h = [...app.querySelectorAll("h3")].find(x => /Pregunta para comprobar/i.test(x.textContent));
+    if (!h) return;
+    const preg = h.nextElementSibling ? h.nextElementSibling.textContent.trim() : "";
+    const clave = "respuesta-" + n;
+    const caja = document.createElement("div");
+    caja.className = "respuesta";
+    caja.innerHTML = `<label for="resp">Tu respuesta</label>
+      <textarea id="resp" rows="6" placeholder="Escribe aquí con tus palabras…"></textarea>
+      <div class="acciones"><button type="button" class="boton" id="resp-guardar">Guardar en el diario</button>
+      <button type="button" class="boton secundario" id="resp-copiar">Copiar para enviar a Claude</button></div>
+      <p class="aviso" id="resp-aviso">Se guarda sola mientras escribes. Cuando la tengas, cópiala y pégala en el chat del curso para que la corrija.</p>`;
+    h.nextElementSibling.insertAdjacentElement("afterend", caja);
+    const ta = caja.querySelector("textarea"), aviso = caja.querySelector("#resp-aviso");
+    ta.value = guarda.leer(clave, "");
+    ta.addEventListener("input", () => guarda.escribir(clave, ta.value));
+    caja.querySelector("#resp-guardar").onclick = () => {
+      const t = ta.value.trim(); if (!t) return;
+      const entradas = guarda.leer("diario", []);
+      entradas.push({ id: Date.now(), fecha: hoy(), tipo: "Respuesta", t: `Lección ${n}. ${preg}\n\n${t}` });
+      guarda.escribir("diario", entradas);
+      aviso.textContent = "Guardada en el diario con el tipo «Respuesta».";
+    };
+    caja.querySelector("#resp-copiar").onclick = async () => {
+      const texto = `Respuesta a la pregunta de la lección ${n} (${titulo}):\n${ta.value.trim()}`;
+      try { await navigator.clipboard.writeText(texto); aviso.textContent = "Copiada. Pégala en el chat del curso."; }
+      catch (e) { ta.select(); aviso.textContent = "No se pudo copiar automáticamente: el texto está seleccionado, cópialo a mano."; }
+    };
   }
 
   async function indice() {
@@ -190,7 +222,7 @@
     }));
   }
 
-  const TIPOS = ["Estudio", "Ritual", "Meditación", "Tirada", "Sueño", "Sincronicidad", "Reflexión", "Otro"];
+  const TIPOS = ["Estudio", "Respuesta", "Ritual", "Meditación", "Tirada", "Sueño", "Sincronicidad", "Reflexión", "Otro"];
   const hoy = () => { const d = new Date(); d.setMinutes(d.getMinutes() - d.getTimezoneOffset()); return d.toISOString().slice(0, 10); };
   const fechaLarga = iso => new Date(iso + "T12:00:00").toLocaleDateString("es", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
 

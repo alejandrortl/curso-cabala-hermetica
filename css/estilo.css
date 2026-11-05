@@ -220,3 +220,6 @@ h2 { scroll-margin-top: 4.5rem; }
 .contenido { padding-bottom: 4rem; }
 .recomienda { background: var(--papel); border: 1px solid var(--borde); border-left: 4px solid var(--acento); border-radius: 8px; padding: .2rem 1rem .6rem; margin: 1.5rem 0; }
 .recomienda ul { padding-left: 1.1rem; list-style: none; } .recomienda li { margin: .5rem 0; }
+.respuesta { background: var(--papel); border: 1px solid var(--borde); border-radius: 8px; padding: .8rem 1rem; margin: 1rem 0; }
+.respuesta label { font-weight: 600; }
+.respuesta textarea { width: 100%; font: inherit; margin: .4rem 0; padding: .5rem; border: 1px solid var(--borde); border-radius: 6px; background: var(--fondo); color: var(--tinta); }
