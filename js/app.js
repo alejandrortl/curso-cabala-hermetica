@@ -64,14 +64,24 @@
   // Tras cargar una página de contenido: audio de las palabras, reproductores y animaciones.
   function prepara(seccionN) {
     const h2s = [...app.querySelectorAll("h2")];
+    document.querySelectorAll(".indice-flot, .indice-panel").forEach(e => e.remove());
     if (h2s.length >= 3) {
-      const h1 = app.querySelector("h1");
-      const caja = document.createElement("details");
-      caja.className = "indice-pag"; caja.open = true;
-      caja.innerHTML = `<summary>Índice de esta página</summary><ol>${h2s.map((h, i) => `<li><button type="button" data-ir="${i}">${esc(h.textContent.replace(/^\d+\.\s*/, ""))}</button></li>`).join("")}</ol>`;
-      (h1 || app.firstChild).insertAdjacentElement(h1 ? "afterend" : "beforebegin", caja);
-      caja.addEventListener("click", e => { const b = e.target.closest("[data-ir]"); if (b) h2s[+b.dataset.ir].scrollIntoView({ behavior: "smooth" }); });
-      h2s.forEach(h => { const b = document.createElement("button"); b.type = "button"; b.className = "al-indice"; b.title = "Volver al índice"; b.textContent = "↑ índice"; b.onclick = () => caja.scrollIntoView({ behavior: "smooth" }); h.appendChild(b); });
+      const titulo = (app.querySelector("h1") || {}).textContent || "";
+      const panel = document.createElement("nav");
+      panel.className = "indice-panel"; panel.hidden = true; panel.setAttribute("aria-label", "Índice de esta página");
+      panel.innerHTML = `<div class="ip-cab"><strong>${esc(titulo)}</strong><button type="button" class="ip-cerrar" aria-label="Cerrar índice">✕</button></div>
+        <ol>${h2s.map((h, i) => `<li><button type="button" data-ir="${i}">${esc(h.textContent.replace(/^\d+\.\s*/, ""))}</button></li>`).join("")}</ol>
+        <a href="#/indice" class="ip-todo">Índice de todo el curso</a>`;
+      const boton = document.createElement("button");
+      boton.type = "button"; boton.className = "indice-flot"; boton.setAttribute("aria-label", "Abrir el índice"); boton.innerHTML = "☰ Índice";
+      const abre = v => { panel.hidden = !v; boton.setAttribute("aria-expanded", v); };
+      boton.onclick = () => abre(panel.hidden);
+      panel.addEventListener("click", e => {
+        const b = e.target.closest("[data-ir]");
+        if (b) { abre(false); h2s[+b.dataset.ir].scrollIntoView({ behavior: "smooth" }); }
+        else if (e.target.closest(".ip-cerrar, .ip-todo")) abre(false);
+      });
+      document.body.append(panel, boton);
     }
     app.querySelectorAll("[data-decir]").forEach(el => el.insertAdjacentHTML("afterend", " " + AUDIO.boton(el.dataset.decir, el.dataset.tr, "Escuchar")));
     MEDITACION.monta(app);
@@ -271,6 +281,7 @@
   });
 
   function ruta() {
+    document.querySelectorAll(".indice-flot, .indice-panel").forEach(e => e.remove());
     const h = location.hash.replace(/^#\/?/, "");
     const [seccion, arg] = h.split("/");
     document.querySelectorAll(".menu a").forEach(a => a.classList.toggle("activo", a.getAttribute("href") === "#/" + (seccion === "ritual" ? "rituales" : seccion || "")));
