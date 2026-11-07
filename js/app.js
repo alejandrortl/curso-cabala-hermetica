@@ -59,7 +59,7 @@
         if (e.target.checked) h.push(n);
         guarda.escribir("lecciones-hechas", h);
       });
-      prepara(seccionN);
+      prepara(seccionN, n);
       cuadroRespuesta(n, meta.titulo);
     } catch (e) {
       app.innerHTML = `<p>No se pudo cargar la lección (${esc(e.message)}).</p>`;
@@ -67,7 +67,8 @@
   }
 
   // Tras cargar una página de contenido: audio de las palabras, reproductores y animaciones.
-  function prepara(seccionN) {
+  function prepara(seccionN, leccionN) {
+    GLOSA.marca(app, leccionN);
     const h2s = [...app.querySelectorAll("h2")];
     document.querySelectorAll(".indice-flot, .indice-panel").forEach(e => e.remove());
     if (h2s.length >= 3) {
@@ -368,6 +369,7 @@
     else if (seccion === "ritual") ritual(arg, parseInt(h.split("/")[2], 10) || 0);
     else if (seccion === "indice") indice();
     else if (seccion === "cronologia") cronologia();
+    else if (seccion === "glosario") GLOSA.pagina(app, arg);
     else if (seccion === "diario") diario();
     else inicio();
   }
