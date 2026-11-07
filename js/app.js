@@ -16,6 +16,10 @@
     app.innerHTML = `
       <h1>Curso de Qabalah hermética, tarot y numerología</h1>
       <p>Un curso de iniciación progresivo, una lección cada vez, con la baraja Rider-Waite como referencia y las 22 letras hebreas como hilo conductor.</p>
+      <h2>Lecciones disponibles</h2>
+      <ol class="lista-lecciones">${C.lecciones.filter(l => l.disponible).map(l => `
+        <li><a href="#/leccion/${l.n}"><span class="num">Lección ${l.n}</span> ${esc(l.titulo)}</a>${hechas.includes(l.n) ? ' <span class="etiqueta ok">completada</span>' : ""}</li>`).join("")}
+      </ol>
       <div class="tarjetas">
         <div class="tarjeta"><h3>Lecciones</h3><p>${hechas.length} de ${C.lecciones.length} completadas</p>
           ${sig ? `<a href="#/leccion/${sig.n}">Continuar con la lección ${sig.n}</a>` : ""}</div>

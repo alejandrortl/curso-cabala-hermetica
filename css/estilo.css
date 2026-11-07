@@ -307,3 +307,10 @@ h2 { scroll-margin-top: 4.5rem; }
 .crono li > div { color: var(--tinta); }
 @media (max-width: 640px) { .crono li { grid-template-columns: 1fr; gap: .1rem; } }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .c-judia { color: #d4a94a; } :root:not([data-theme="light"]) .c-cristiana { color: #b99be0; } :root:not([data-theme="light"]) .c-hermetica { color: #6fc296; } }
+
+/* Portada: lista de lecciones disponibles */
+.lista-lecciones { list-style: none; padding: 0; margin: 0 0 1.5rem; display: grid; gap: .5rem; }
+.lista-lecciones li { background: var(--papel); border: 1px solid var(--borde, #ccc); border-radius: 8px; padding: .7rem 1rem; }
+.lista-lecciones a { text-decoration: none; display: inline; }
+.lista-lecciones a:hover { text-decoration: underline; }
+.lista-lecciones .num { font-weight: 600; margin-right: .4rem; }
