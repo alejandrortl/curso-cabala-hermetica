@@ -228,3 +228,82 @@ h2 { scroll-margin-top: 4.5rem; }
 .figura.obra img { max-height: 80vh; width: auto; max-width: 100%; margin: 0 auto; }
 .figura.obra figcaption { text-align: left; }
 .figura.obra .credito { display: block; margin-top: .3rem; font-size: .78rem; }
+
+/* Lección 3 */
+.arbol .pilares rect { fill: var(--tinta); fill-opacity: .05; }
+.arbol .senderos path, .mundos .senderos path { fill: none; stroke: var(--borde); stroke-width: 3; }
+.diagrama .aro { stroke: var(--suave); stroke-width: 1.5; }
+.diagrama text.n { font-size: 15px; font-weight: 700; fill: #fff; paint-order: stroke; stroke: #000; stroke-opacity: .55; stroke-width: 3px; }
+.arbol text.n { font-size: 18px; }
+.arbol text.nom { font-size: 15px; }
+.arbol text.pil { font-size: 16px; fill: var(--oro); }
+.diagrama .daat circle { fill: var(--papel); stroke: var(--suave); stroke-width: 1.5; stroke-dasharray: 5 4; }
+.diagrama .daat text.n { fill: var(--suave); stroke: none; }
+.interactivo .nodo { cursor: pointer; outline: none; }
+.interactivo .nodo:hover .aro, .interactivo .nodo:focus-visible .aro, .interactivo .nodo:focus-visible circle { stroke: var(--acento); stroke-width: 3; }
+.interactivo .nodo.sel .aro, .interactivo .nodo.sel circle { stroke: var(--acento); stroke-width: 4; }
+.interactivo .info { min-height: 3.4em; margin: .5rem 0 0; padding: .5rem .8rem; background: var(--fondo); border-radius: 6px; font-size: .9rem; text-align: left; }
+.vistas { display: flex; gap: .5rem; justify-content: center; margin-bottom: .5rem; }
+.vistas button[aria-pressed="true"] { background: var(--acento); color: var(--papel); }
+.interactivo[data-modo="gd"] .m-zohar, .interactivo[data-modo="zohar"] .m-gd { display: none; }
+.cuerpo-arbol { max-width: 380px; margin: 0 auto; }
+.cuerpo-arbol .silueta circle, .cuerpo-arbol .silueta path { fill: var(--fondo); stroke: var(--suave); stroke-width: 1.6; }
+.cuerpo-arbol .pilar-medio { stroke: var(--oro); stroke-width: 3; stroke-opacity: .45; }
+.diagrama text.der { text-anchor: end; }
+.mundos .w1 { fill: #e8c35a; fill-opacity: .30; } .mundos .w2 { fill: #5b8fd6; fill-opacity: .22; }
+.mundos .w3 { fill: #b9a9e6; fill-opacity: .25; } .mundos .w4 { fill: #8a6a3a; fill-opacity: .25; }
+.mundos .heb { font-family: "Frank Ruhl Libre", serif; fill: var(--oro); }
+.materializa .cajas rect { fill: var(--fondo); stroke: var(--borde); stroke-width: 1.5; }
+.materializa .cajas .m1 { fill: #e8c35a; fill-opacity: .35; } .materializa .cajas .m2 { fill: #5b8fd6; fill-opacity: .25; }
+.materializa .cajas .m3 { fill: #b9a9e6; fill-opacity: .3; } .materializa .cajas .m4 { fill: #8a6a3a; fill-opacity: .3; }
+.materializa text.oscuro { fill: var(--tinta); font-size: 13px; }
+.tetractys .pts circle { fill: var(--oro); }
+.vesica .circ { fill: none; stroke: var(--suave); stroke-width: 2; }
+.vesica .almendra { fill: var(--oro); fill-opacity: .25; }
+.vesica .tri { fill: none; stroke: var(--acento); stroke-width: 2.5; }
+.vesica .eje { stroke: var(--suave); stroke-dasharray: 4 4; }
+.vesica .centro { fill: var(--tinta); }
+.penta .guia, .penta-anim .guia { fill: none; stroke: var(--borde); stroke-width: 1.5; }
+.penta .estrella { fill: none; stroke: var(--tinta); stroke-width: 2; stroke-linejoin: round; }
+.penta .tramo { stroke-width: 6; stroke-linecap: round; }
+.penta .tramo.a { stroke: #2c5fb8; } .penta .tramo.b { stroke: #d22b20; }
+.penta .ta { fill: #2c5fb8; } .penta .tb { fill: #d22b20; }
+.penta-anim .traza { fill: none; stroke: #3b7bff; stroke-width: 5; stroke-linejoin: round; stroke-linecap: round;
+  stroke-dasharray: 1150; stroke-dashoffset: 1150; animation: rayo 5s ease-in-out .5s forwards; filter: drop-shadow(0 0 4px #7fb0ff); }
+.penta-anim .inicio { fill: #3b7bff; animation: late 1.6s ease-in-out infinite; }
+.cuartos .circulo-luz { fill: none; stroke: var(--oro); stroke-width: 3; stroke-dasharray: 2 6; stroke-linecap: round; }
+.cuartos .mini path { fill: none; stroke: #3b7bff; stroke-width: 14; stroke-linejoin: round; }
+.cuartos .tu { fill: var(--acento); fill-opacity: .25; stroke: var(--acento); stroke-width: 2; }
+.cuartos .lineas-tu { stroke: var(--acento); stroke-width: 2; }
+.cuartos .punta { fill: var(--acento); }
+.cuartos .heb { font-family: "Frank Ruhl Libre", serif; fill: var(--oro); }
+.solidos .solido path { fill: none; stroke: var(--tinta); stroke-width: 1.8; stroke-linejoin: round; }
+.solidos .solido path.atras { stroke: var(--suave); stroke-width: 1; stroke-dasharray: 3 3; }
+.flor .c { fill: none; stroke: var(--oro); stroke-width: 1.6; opacity: 0; animation: aparece .5s ease forwards; }
+.flor .c1 { animation-delay: .2s; } .flor .c2 { animation-delay: .5s; } .flor .c3 { animation-delay: .8s; } .flor .c4 { animation-delay: 1.1s; }
+.flor .c5 { animation-delay: 1.4s; } .flor .c6 { animation-delay: 1.7s; } .flor .c7 { animation-delay: 2s; } .flor .c8 { animation-delay: 2.3s; }
+.flor .c9 { animation-delay: 2.6s; } .flor .c10 { animation-delay: 2.9s; } .flor .c11 { animation-delay: 3.2s; }
+.flor .sendas { fill: none; stroke: var(--acento); stroke-width: 3; stroke-dasharray: 2200; stroke-dashoffset: 2200; animation: rayo 3s ease-in-out 4.6s forwards; }
+.flor .p { fill: var(--acento); opacity: 0; animation: aparece .6s ease 3.9s forwards; }
+.flor .pd { fill: var(--papel); stroke: var(--acento); stroke-width: 2; stroke-dasharray: 3 3; opacity: 0; animation: aparece .6s ease 3.9s forwards; }
+.flor { max-width: 420px; margin: 0 auto; }
+.simbolo { background: var(--papel); border: 1px solid var(--oro); border-radius: 8px; padding: .2rem 1rem .6rem; margin: 1.5rem 0; }
+.simbolo h3 { color: var(--oro); }
+.autoexamen details { background: var(--papel); border: 1px solid var(--borde); border-radius: 8px; padding: .5rem .9rem; margin: .5rem 0; }
+.autoexamen summary { cursor: pointer; font-weight: 600; }
+.autoexamen details p { margin: .5rem 0 .2rem; }
+
+/* Línea del tiempo */
+.leyenda-crono { display: flex; flex-wrap: wrap; gap: .4rem; font-size: .8rem; margin: .5rem 0 1rem; }
+.leyenda-crono span { padding: .1rem .6rem; border-radius: 99px; border-left: 4px solid; background: var(--papel); }
+.crono { list-style: none; padding: 0; margin: 0; border-left: 2px solid var(--borde); }
+.crono li { position: relative; display: grid; grid-template-columns: 7.5rem 1fr; gap: .8rem; padding: .5rem 0 .5rem 1rem; }
+.crono li::before { content: ""; position: absolute; left: -7px; top: .95rem; width: 12px; height: 12px; border-radius: 50%; background: currentColor; }
+.crono .c-fecha { font-weight: 600; color: var(--tinta); }
+.crono .c-lec { font-size: .8rem; white-space: nowrap; }
+.c-antigua { color: #6b7a8f; } .c-judia { color: #9a7420; } .c-cristiana { color: #5b3a7a; } .c-hermetica { color: #2f6b4a; }
+.leyenda-crono span { color: var(--tinta); } .leyenda-crono .c-antigua { border-color: #6b7a8f; } .leyenda-crono .c-judia { border-color: #9a7420; }
+.leyenda-crono .c-cristiana { border-color: #5b3a7a; } .leyenda-crono .c-hermetica { border-color: #2f6b4a; }
+.crono li > div { color: var(--tinta); }
+@media (max-width: 640px) { .crono li { grid-template-columns: 1fr; gap: .1rem; } }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .c-judia { color: #d4a94a; } :root:not([data-theme="light"]) .c-cristiana { color: #b99be0; } :root:not([data-theme="light"]) .c-hermetica { color: #6fc296; } }

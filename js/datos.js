@@ -3,7 +3,7 @@ window.CURSO = {
   lecciones: [
     { n: 1, titulo: "Fundamentos: las tres Cábalas, historia y masonería", disponible: true },
     { n: 2, titulo: "Del Kybalión a la Cábala: de dónde sale todo", disponible: true },
-    { n: 3, titulo: "El Árbol de la Vida y la geometría sagrada", disponible: false },
+    { n: 3, titulo: "El Árbol de la Vida y la geometría sagrada", disponible: true },
     { n: 4, titulo: "Las 22 letras hebreas a fondo", disponible: false },
     { n: 5, titulo: "Los 22 senderos y los Arcanos Mayores", disponible: false },
     { n: 6, titulo: "Los Arcanos Menores", disponible: false },
@@ -25,10 +25,10 @@ window.CURSO = {
     { l: "ה", nombre: "He", he: "הֵא",     valor: 5,   tipo: "simple", significado: "ventana",      astro: "Aries",      arcano: "IV El Emperador",      leccion: 1 },
     { l: "ו", nombre: "Vav", he: "וָו",    valor: 6,   tipo: "simple", significado: "clavo",        astro: "Tauro",      arcano: "V El Hierofante",      leccion: null },
     { l: "ז", nombre: "Záyin", he: "זַיִן",  valor: 7,   tipo: "simple", significado: "espada",       astro: "Géminis",    arcano: "VI Los Enamorados",    leccion: null },
-    { l: "ח", nombre: "Jet", he: "חֵית",    valor: 8,   tipo: "simple", significado: "cerca",        astro: "Cáncer",     arcano: "VII El Carro",         leccion: null },
+    { l: "ח", nombre: "Jet", he: "חֵית",    valor: 8,   tipo: "simple", significado: "cerca",        astro: "Cáncer",     arcano: "VII El Carro",         leccion: 3 },
     { l: "ט", nombre: "Tet", he: "טֵית",    valor: 9,   tipo: "simple", significado: "serpiente",    astro: "Leo",        arcano: "VIII La Fuerza",       leccion: null },
     { l: "י", nombre: "Yod", he: "יוֹד",    valor: 10,  tipo: "simple", significado: "mano",         astro: "Virgo",      arcano: "IX El Ermitaño",       leccion: 2 },
-    { l: "כ", nombre: "Kaf", he: "כַּף",    valor: 20,  tipo: "doble", significado: "palma",         astro: "Júpiter",    arcano: "X La Rueda de la Fortuna", leccion: null },
+    { l: "כ", nombre: "Kaf", he: "כַּף",    valor: 20,  tipo: "doble", significado: "palma",         astro: "Júpiter",    arcano: "X La Rueda de la Fortuna", leccion: 3 },
     { l: "ל", nombre: "Lamed", he: "לָמֶד",  valor: 30,  tipo: "simple", significado: "aguijada",     astro: "Libra",      arcano: "XI La Justicia",       leccion: 1 },
     { l: "מ", nombre: "Mem", he: "מֵם",    valor: 40,  tipo: "madre", significado: "agua",          astro: "Agua",       arcano: "XII El Colgado",       leccion: 2 },
     { l: "נ", nombre: "Nun", he: "נוּן",    valor: 50,  tipo: "simple", significado: "pez",          astro: "Escorpio",   arcano: "XIII La Muerte",       leccion: 2 },
@@ -37,9 +37,9 @@ window.CURSO = {
     { l: "פ", nombre: "Pe", he: "פֵּא",     valor: 80,  tipo: "doble", significado: "boca",          astro: "Marte",      arcano: "XVI La Torre",         leccion: null },
     { l: "צ", nombre: "Tsadi", he: "צָדִי",  valor: 90,  tipo: "simple", significado: "anzuelo",      astro: "Acuario",    arcano: "XVII La Estrella",     leccion: null },
     { l: "ק", nombre: "Qof", he: "קוֹף",    valor: 100, tipo: "simple", significado: "nuca",         astro: "Piscis",     arcano: "XVIII La Luna",        leccion: 1 },
-    { l: "ר", nombre: "Resh", he: "רֵישׁ",   valor: 200, tipo: "doble", significado: "cabeza",        astro: "Sol",        arcano: "XIX El Sol",           leccion: null },
+    { l: "ר", nombre: "Resh", he: "רֵישׁ",   valor: 200, tipo: "doble", significado: "cabeza",        astro: "Sol",        arcano: "XIX El Sol",           leccion: 3 },
     { l: "ש", nombre: "Shin", he: "שִׁין",   valor: 300, tipo: "madre", significado: "diente",        astro: "Fuego",      arcano: "XX El Juicio",         leccion: null },
-    { l: "ת", nombre: "Tav", he: "תָּו",    valor: 400, tipo: "doble", significado: "marca",         astro: "Saturno",    arcano: "XXI El Mundo",         leccion: null }
+    { l: "ת", nombre: "Tav", he: "תָּו",    valor: 400, tipo: "doble", significado: "marca",         astro: "Saturno",    arcano: "XXI El Mundo",         leccion: 3 }
   ],
 
 
@@ -73,6 +73,43 @@ window.CURSO = {
         { texto: "Quédate en silencio, sintiendo la columna de luz que te une desde el origen hasta la tierra.", pausa: 90 },
         { texto: "Poco a poco, deja que la imagen se desvanezca. Respira hondo, mueve suavemente el cuerpo y, cuando quieras, abre los ojos.", pausa: 10 }
       ] },
+    { id: "mundos", leccion: 3, titulo: "Los cuatro mundos: de la voluntad a la acción", resumen: "Unos 13 minutos. Sentado. Antes de empezar, elige un objetivo pequeño y concreto.",
+      pasos: [
+        { texto: "Siéntate con la espalda recta y los pies en el suelo. Cierra los ojos. Respira despacio: inspira contando hasta cuatro, retén dos, espira contando hasta cuatro.", pausa: 45 },
+        { texto: "Imagina sobre tu cabeza la esfera de luz blanca, como en la Cruz Cabalística. Es Kéter, la Corona.", pausa: 30 },
+        { texto: "Trae a la mente el objetivo que has elegido. No pienses todavía en cómo. Solo pregúntate: ¿por qué lo quiero de verdad?", pausa: 40 },
+        { texto: "Este es el mundo de Atsilut, la voluntad, el Fuego. Siente el porqué como una llama pequeña y firme en la esfera de luz. Resúmelo en una sola frase.", pausa: 45 },
+        { texto: "Ahora la luz desciende un poco, hasta tu frente. Es el mundo de Beriá, la Creación, el Agua. Aquí la voluntad se convierte en plan.", pausa: 15 },
+        { texto: "Pregúntate: qué voy a hacer exactamente, cuándo y durante cuánto tiempo. Deja que la idea tome forma, como el agua que llena un molde.", pausa: 60 },
+        { texto: "La luz baja hasta tu pecho y tu vientre. Es el mundo de Yetsirá, la Formación, el Aire. Aquí la idea se convierte en imagen.", pausa: 15 },
+        { texto: "Imagina el objetivo ya cumplido, con todo detalle: dónde estás, qué ves, qué oyes. Y sobre todo, qué sientes. Deja que la emoción llegue.", pausa: 75 },
+        { texto: "La luz baja hasta tus pies y forma bajo ellos una esfera de cuatro colores: citrino, oliva, rojizo y negro. Es Maljut, el mundo de Asiá, la Acción, la Tierra.", pausa: 20 },
+        { texto: "Pregúntate: cuál es el primer paso físico, pequeño, que puedo dar hoy mismo. Elige uno solo y comprométete con él.", pausa: 45 },
+        { texto: "Siente la columna de luz completa: la voluntad arriba, el plan en la cabeza, la imagen en el pecho y la acción en los pies. Todo unido.", pausa: 45 },
+        { texto: "Respira hondo. Mueve los dedos de las manos y de los pies. Abre los ojos y escribe en el diario las cuatro líneas: voluntad, plan, imagen y primer paso. Y da ese paso hoy.", pausa: 10 }
+      ] },
+    { id: "lbrp", leccion: 3, titulo: "Ritual Menor de Destierro del Pentagrama guiado", resumen: "Unos 8 minutos. De pie, mirando al Este.",
+      pasos: [
+        { texto: "Ponte de pie mirando al Este, con los brazos sueltos. Respira despacio unas cuantas veces.", pausa: 20 },
+        { texto: "Empezamos con la Cruz Cabalística. Imagina la esfera de luz blanca sobre tu cabeza. Mano a la frente: Atá.", pausa: 12 },
+        { texto: "Al pecho, la luz baja hasta los pies: Maljút.", pausa: 12 },
+        { texto: "Hombro derecho: ve Guevurá. Hombro izquierdo: ve Guedulá.", pausa: 15 },
+        { texto: "Manos juntas ante el pecho: le Olám. Amén.", pausa: 15 },
+        { texto: "Extiende el brazo derecho hacia el Este. Empezando por tu cadera izquierda, traza un gran pentagrama de luz azul: sube hasta encima de tu cabeza, baja a la cadera derecha, cruza al hombro izquierdo, ve al hombro derecho y vuelve a la cadera izquierda.", pausa: 15 },
+        { texto: "Señala el centro de la estrella y di despacio, con voz grave: Yod, He, Vav, He.", pausa: 12 },
+        { texto: "Con el brazo extendido, gira hacia el Sur, trazando una línea de luz blanca. Traza el pentagrama. Señala el centro y di: Adonái.", pausa: 25 },
+        { texto: "Gira hacia el Oeste, prolongando la línea. Traza el pentagrama. Señala el centro y di: Ehié.", pausa: 25 },
+        { texto: "Gira hacia el Norte. Traza el pentagrama. Señala el centro y di: Aglá.", pausa: 25 },
+        { texto: "Vuelve al Este, cerrando el círculo en el centro del primer pentagrama. Estás dentro de un círculo de luz blanca con cuatro estrellas azules.", pausa: 15 },
+        { texto: "Abre los brazos en cruz. Di: Ante mí, Rafael. Siente delante un aire fresco, en tonos amarillos y violetas.", pausa: 15 },
+        { texto: "Detrás de mí, Gabriel. Siente a tu espalda el agua, en azul y naranja.", pausa: 15 },
+        { texto: "A mi derecha, Miguel. Siente a tu derecha el calor del fuego, en rojo y verde.", pausa: 15 },
+        { texto: "A mi izquierda, Uriel. Siente a tu izquierda la tierra firme, en oliva, rojizo y negro.", pausa: 15 },
+        { texto: "Di: Porque a mi alrededor arden los pentagramas, y en la columna brilla la estrella de seis rayos. Imagina un hexagrama dorado sobre tu pecho.", pausa: 25 },
+        { texto: "Cerramos con la Cruz Cabalística. Mano a la frente: Atá. Al pecho: Maljút.", pausa: 15 },
+        { texto: "Hombro derecho: ve Guevurá. Hombro izquierdo: ve Guedulá. Manos juntas: le Olám. Amén.", pausa: 20 },
+        { texto: "Quédate unos segundos en silencio, dentro del círculo. Después respira hondo, siente el peso de los pies en el suelo y vuelve con calma.", pausa: 20 }
+      ] },
     { id: "consagracion", ritual: "consagracion", titulo: "Consagración de la baraja guiada", resumen: "Unos 30 minutos. De pie ante el altar, mirando al Este.",
       pasos: [
         { texto: "Bienvenido a la consagración de tu baraja. Comprueba que el altar está preparado: el incienso al Este, la vela al Sur, la copa de agua al Oeste y la sal al Norte. En el centro, los cinco montones de cartas y el paño de seda.", pausa: 20 },
@@ -105,6 +142,40 @@ window.CURSO = {
       ] }
   ],
 
+  // Línea del tiempo (#/cronologia): solo se muestran las entradas de lecciones ya disponibles.
+  // tipo: judia | cristiana | hermetica | antigua
+  cronologia: [
+    { orden: -530, fecha: "h. 530 a. C.", tipo: "antigua", titulo: "Pitágoras en Crotona", texto: "Su escuela trata los números como principios del cosmos: la tetractys.", leccion: 3 },
+    { orden: -360, fecha: "h. 360 a. C.", tipo: "antigua", titulo: "Platón, Timeo", texto: "Asocia los cinco sólidos regulares a los elementos y al universo.", leccion: 3 },
+    { orden: -300, fecha: "h. 300 a. C.", tipo: "antigua", titulo: "Euclides, Elementos", texto: "La vesica piscis, la proporción áurea y la prueba de que solo hay cinco sólidos regulares.", leccion: 3 },
+    { orden: -250, fecha: "s. III-I a. C.", tipo: "judia", titulo: "Libro de Enoc", texto: "La subida del patriarca por estancias celestiales.", leccion: 2 },
+    { orden: 150, fecha: "s. II-III", tipo: "hermetica", titulo: "Corpus Hermeticum", texto: "Los tratados griegos atribuidos a Hermes Trismegisto.", leccion: 1 },
+    { orden: 250, fecha: "s. III", tipo: "antigua", titulo: "Plotino", texto: "Formula la idea de emanación que heredan el hermetismo y la Cábala.", leccion: 2 },
+    { orden: 400, fecha: "s. II-VI", tipo: "judia", titulo: "Séfer Yetsirá", texto: "Primera mención de las diez sefirot: «diez y no nueve, diez y no once».", leccion: 3 },
+    { orden: 1180, fecha: "h. 1180", tipo: "judia", titulo: "Bahir", texto: "En Provenza: las sefirot como poderes divinos y la imagen del árbol cósmico.", leccion: 3 },
+    { orden: 1285, fecha: "h. 1280-1290", tipo: "judia", titulo: "Zohar", texto: "Moisés de León, en Castilla. La obra clásica de la Cábala.", leccion: 1 },
+    { orden: 1300, fecha: "h. 1300", tipo: "judia", titulo: "Tikunéi Zóhar", texto: "Su oración Pataj Eliyahu coloca las sefirot sobre el cuerpo.", leccion: 3 },
+    { orden: 1486, fecha: "1486", tipo: "cristiana", titulo: "Pico della Mirandola", texto: "Sus 900 tesis inauguran la Cábala cristiana.", leccion: 1 },
+    { orden: 1509, fecha: "1509", tipo: "antigua", titulo: "Pacioli, De divina proportione", texto: "Con los sólidos dibujados por Leonardo.", leccion: 3 },
+    { orden: 1516, fecha: "1516", tipo: "cristiana", titulo: "Ricius, Portae Lucis", texto: "Uno de los primeros árboles sefiróticos impresos.", leccion: 1 },
+    { orden: 1517, fecha: "1517", tipo: "cristiana", titulo: "Reuchlin, De arte cabalistica", texto: "La Cábala explicada a los humanistas cristianos.", leccion: 1 },
+    { orden: 1525, fecha: "1525", tipo: "antigua", titulo: "Durero, Underweysung der Messung", texto: "La construcción del pentágono sobre una vesica piscis.", leccion: 3 },
+    { orden: 1533, fecha: "1533", tipo: "hermetica", titulo: "Agrippa, De occulta philosophia", texto: "La gran suma de la magia renacentista; el hombre en el pentagrama.", leccion: 3 },
+    { orden: 1570, fecha: "1569-1572", tipo: "judia", titulo: "Isaac Luria en Safed", texto: "Tsimtsum, rotura de los vasos, cáscaras y tikún.", leccion: 3 },
+    { orden: 1596, fecha: "1596", tipo: "antigua", titulo: "Kepler, Mysterium cosmographicum", texto: "El cosmos construido con los cinco sólidos platónicos.", leccion: 3 },
+    { orden: 1652, fecha: "1652-1654", tipo: "cristiana", titulo: "Kircher, Oedipus Aegyptiacus", texto: "Su Árbol fija la disposición de senderos que usará la Golden Dawn.", leccion: 3 },
+    { orden: 1717, fecha: "1717", tipo: "hermetica", titulo: "Gran Logia de Londres", texto: "Nace la masonería especulativa moderna.", leccion: 1 },
+    { orden: 1781, fecha: "1781", tipo: "hermetica", titulo: "Court de Gébelin y Mellet", texto: "Primer vínculo entre el tarot y las letras hebreas.", leccion: 1 },
+    { orden: 1855, fecha: "1855-1856", tipo: "hermetica", titulo: "Éliphas Lévi, Dogma y ritual de la alta magia", texto: "Sistematiza letras y arcanos; el pentagrama invertido como signo maléfico.", leccion: 1 },
+    { orden: 1887, fecha: "1887", tipo: "hermetica", titulo: "Mathers, Kabbalah Unveiled", texto: "Traduce partes del Zohar al inglés; incluye las Qliphoth.", leccion: 3 },
+    { orden: 1888, fecha: "1888", tipo: "hermetica", titulo: "Golden Dawn", texto: "Fundada en Londres por tres masones.", leccion: 1 },
+    { orden: 1908, fecha: "1908", tipo: "hermetica", titulo: "El Kybalión", texto: "Los siete principios herméticos, en clave moderna.", leccion: 2 },
+    { orden: 1909, fecha: "1909", tipo: "hermetica", titulo: "Tarot Rider-Waite y Liber 777", texto: "La baraja de Waite y Pamela Colman Smith; las tablas de Crowley.", leccion: 1 },
+    { orden: 1935, fecha: "1935", tipo: "hermetica", titulo: "Dion Fortune, La Cábala mística", texto: "El manual clásico de la Qabalah hermética.", leccion: 2 },
+    { orden: 1937, fecha: "1937-1940", tipo: "hermetica", titulo: "Regardie, The Golden Dawn", texto: "Publica los rituales de la orden, entre ellos el LBRP.", leccion: 3 },
+    { orden: 1941, fecha: "1941", tipo: "judia", titulo: "Scholem, Las grandes tendencias de la mística judía", texto: "Funda el estudio académico de la Cábala.", leccion: 3 }
+  ],
+
   materiales: [
     { id: "vela", texto: "Vela blanca y algo para encenderla (Fuego, Yod, Bastos)", imprescindible: true },
     { id: "agua", texto: "Copa o vaso con agua limpia (Agua, He, Copas)", imprescindible: true },
@@ -122,7 +193,8 @@ window.CURSO = {
   rituales: [
     { nombre: "Consagración de la baraja", cuando: "Una sola vez, antes del primer uso", materiales: "Vela, agua, incienso, sal, seda, altar, brújula", estado: "Disponible", enlace: "#/ritual/consagracion" },
     { nombre: "Cruz Cabalística", cuando: "Mañana y noche; al empezar y terminar cada práctica", materiales: "Ninguno", estado: "Disponible en la lección 2", enlace: "#/leccion/2" },
-    { nombre: "Ritual Menor de Destierro del Pentagrama", cuando: "Lección 3; antes de cada tirada o meditación", materiales: "Brújula; daga opcional", estado: "Lección 3" },
+    { nombre: "Ritual Menor de Destierro del Pentagrama", cuando: "A diario; antes y después de cada tirada o meditación larga", materiales: "Brújula; daga opcional", estado: "Disponible en la lección 3", enlace: "#/leccion/3/13" },
+    { nombre: "Cierre de la etapa 1", cuando: "Una vez, al terminar la lección 3", materiales: "Vela y diario", estado: "Disponible en la lección 3", enlace: "#/leccion/3/17" },
     { nombre: "Vibración de los nombres divinos", cuando: "Lección 4", materiales: "Ninguno", estado: "Lección 4" },
     { nombre: "Apertura y cierre de una lectura", cuando: "Cada vez que uses las cartas", materiales: "Seda, tapete; vela e incienso opcionales", estado: "Lección 5" },
     { nombre: "Pilar Medio", cuando: "Lección 10", materiales: "Silla de respaldo recto", estado: "Lección 10" },
