@@ -16,6 +16,10 @@
     app.innerHTML = `
       <h1>Curso de Qabalah hermética, tarot y numerología</h1>
       <p>Un curso de iniciación progresivo, una lección cada vez, con la baraja Rider-Waite como referencia y las 22 letras hebreas como hilo conductor.</p>
+      <h2>Lecciones disponibles</h2>
+      <ol class="lista-lecciones">${C.lecciones.filter(l => l.disponible).map(l => `
+        <li><a href="#/leccion/${l.n}"><span class="num">Lección ${l.n}</span> ${esc(l.titulo)}</a>${hechas.includes(l.n) ? ' <span class="etiqueta ok">completada</span>' : ""}</li>`).join("")}
+      </ol>
       <div class="tarjetas">
         <div class="tarjeta"><h3>Lecciones</h3><p>${hechas.length} de ${C.lecciones.length} completadas</p>
           ${sig ? `<a href="#/leccion/${sig.n}">Continuar con la lección ${sig.n}</a>` : ""}</div>
@@ -86,6 +90,7 @@
     }
     app.querySelectorAll("[data-decir]").forEach(el => el.insertAdjacentHTML("afterend", " " + AUDIO.boton(el.dataset.decir, el.dataset.tr, "Escuchar")));
     MEDITACION.monta(app);
+    interactivos();
     const animadas = [...app.querySelectorAll(".repetir")].map(b => b.closest("figure"));
     if ("IntersectionObserver" in window) {
       const obs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("en-marcha"); obs.unobserve(e.target); } }), { threshold: 0.4 });
@@ -100,6 +105,44 @@
     }));
     const destino = seccionN ? h2s[seccionN - 1] : null;
     if (destino) setTimeout(() => destino.scrollIntoView(), 50); else window.scrollTo(0, 0);
+  }
+
+  // Diagramas interactivos: <figure class="interactivo"> con elementos [data-t] (título) y [data-i] (texto),
+  // una caja .info y, opcionalmente, botones [data-vista] que cambian figure.dataset.modo.
+  function interactivos() {
+    app.querySelectorAll("figure.interactivo").forEach(fig => {
+      const caja = fig.querySelector(".info");
+      const muestra = el => {
+        fig.querySelectorAll(".sel").forEach(x => x.classList.remove("sel"));
+        el.classList.add("sel");
+        if (caja) caja.innerHTML = `<strong>${esc(el.dataset.t)}.</strong> ${esc(el.dataset.i || "")}`;
+      };
+      fig.querySelectorAll("[data-t]").forEach(el => {
+        el.setAttribute("tabindex", "0"); el.setAttribute("role", "button"); el.setAttribute("aria-label", el.dataset.t);
+        el.addEventListener("click", () => muestra(el));
+        el.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); muestra(el); } });
+      });
+      fig.querySelectorAll("[data-vista]").forEach(b => b.addEventListener("click", () => {
+        fig.dataset.modo = b.dataset.vista;
+        fig.querySelectorAll("[data-vista]").forEach(x => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
+        fig.querySelectorAll(".sel").forEach(x => x.classList.remove("sel"));
+        if (caja) caja.textContent = b.dataset.nota || "";
+      }));
+    });
+  }
+
+  // Línea del tiempo: crece con cada lección disponible.
+  function cronologia() {
+    const disp = C.lecciones.filter(l => l.disponible).map(l => l.n);
+    const max = Math.max(...disp);
+    const items = (C.cronologia || []).filter(e => e.leccion <= max).sort((a, b) => a.orden - b.orden);
+    const TIPOS = { antigua: "Antigüedad y ciencia", judia: "Cábala judía", cristiana: "Cábala cristiana", hermetica: "Hermetismo y ocultismo" };
+    app.innerHTML = `<h1>Línea del tiempo</h1>
+      <p>Los textos, autores y obras que han aparecido en el curso hasta la lección ${max}. Crece con cada lección nueva.</p>
+      <div class="leyenda-crono">${Object.entries(TIPOS).map(([k, t]) => `<span class="c-${k}">${t}</span>`).join("")}</div>
+      <ol class="crono">${items.map(e => `<li class="c-${e.tipo}"><span class="c-fecha">${esc(e.fecha)}</span>
+        <div><strong>${esc(e.titulo)}.</strong> ${esc(e.texto)} <a href="#/leccion/${e.leccion}" class="c-lec">Lección ${e.leccion}</a></div></li>`).join("")}</ol>`;
+    window.scrollTo(0, 0);
   }
 
   // Cuadro para contestar la pregunta final de la lección dentro de la app.
@@ -154,7 +197,7 @@
       <div class="indice-curso"><details open><summary><a href="#/ritual/consagracion">Consagración de la baraja</a></summary><ol>${rit.map((t, i) => `<li><a href="#/ritual/consagracion/${i + 1}">${esc(t)}</a></li>`).join("")}</ol></details>
       <p><a href="#/rituales">Materiales, tabla de rituales y meditaciones guiadas</a></p></div>
       <h2>Herramientas</h2>
-      <ul><li><a href="#/letras">Las 22 letras hebreas</a>: audio, correspondencias y calculadora de gematría</li><li><a href="#/diario">Diario mágico</a></li></ul>`;
+      <ul><li><a href="#/letras">Las 22 letras hebreas</a>: audio, correspondencias y calculadora de gematría</li><li><a href="#/diario">Diario mágico</a></li><li><a href="#/cronologia">Línea del tiempo</a></li></ul>`;
     window.scrollTo(0, 0);
   }
 
@@ -324,6 +367,7 @@
     else if (seccion === "rituales") rituales();
     else if (seccion === "ritual") ritual(arg, parseInt(h.split("/")[2], 10) || 0);
     else if (seccion === "indice") indice();
+    else if (seccion === "cronologia") cronologia();
     else if (seccion === "diario") diario();
     else inicio();
   }
