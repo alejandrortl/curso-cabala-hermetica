@@ -352,3 +352,33 @@ button.termino:focus-visible { outline: 2px solid var(--acento); outline-offset:
   .tam { order: 2; }
   .menu { order: 3; width: 100%; flex-wrap: wrap; gap: .2rem 1rem; }
 }
+
+/* Lección 4 */
+.rueda-letras { max-width: 520px; margin: 0 auto; }
+.rueda-letras .anillo { fill: none; stroke: var(--borde); stroke-width: 2; stroke-dasharray: 4 5; }
+.rueda-letras .madre circle { fill: #f3dc94; }
+.rueda-letras .doble circle { fill: #d9c9ef; }
+.rueda-letras .simple circle { fill: #cfe8da; }
+.rueda-letras text.l { font-family: "Frank Ruhl Libre", serif; font-size: 24px; font-weight: 700; fill: #2a2420; }
+.diagrama text.heb, .diagrama .heb { font-family: "Frank Ruhl Libre", serif; }
+.cubo { max-width: 480px; margin: 0 auto; }
+.cubo .arista { fill: none; stroke: var(--tinta); stroke-width: 2.2; stroke-linejoin: round; }
+.cubo .arista.oculta { stroke: var(--suave); stroke-width: 1.2; stroke-dasharray: 4 4; }
+.cubo .eje { stroke: var(--oro); stroke-width: 2; stroke-dasharray: 6 5; }
+.cubo .centro { fill: var(--acento); }
+.cubo text.heb { fill: var(--oro); font-size: 18px; }
+.evolucion svg { max-width: 560px; margin: 0 auto; }
+.evolucion .trazo { fill: none; stroke: var(--tinta); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.evolucion .ojo { fill: var(--tinta); }
+.evolucion text.grande, .gematria text.grande { font-size: 44px; font-weight: 400; fill: var(--tinta); }
+.evolucion .cab text { fill: var(--oro); }
+.evolucion .col { opacity: 0; animation: aparece .7s ease forwards; }
+.evolucion .c1 { animation-delay: .3s; } .evolucion .c2 { animation-delay: 1.3s; } .evolucion .c3 { animation-delay: 2.3s; } .evolucion .c4 { animation-delay: 3.3s; }
+.gematria svg { max-width: 560px; margin: 0 auto; }
+.gematria text.v { font-size: 16px; fill: var(--suave); font-weight: 600; }
+.gematria text.suma { font-size: 24px; fill: var(--acento); }
+.gematria text.dorada { fill: var(--oro); }
+.gematria .raya { stroke: var(--borde); stroke-width: 2; }
+.gematria .paso { opacity: 0; animation: aparece .7s ease forwards; }
+.gematria .g1 { animation-delay: .3s; } .gematria .g2 { animation-delay: 1.8s; } .gematria .g3 { animation-delay: 3.3s; }
+.con-errores td, .con-errores th { background: repeating-linear-gradient(-45deg, transparent 0 10px, rgba(210,43,32,.05) 10px 20px); }

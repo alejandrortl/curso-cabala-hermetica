@@ -218,13 +218,14 @@
 
   function letras() {
     app.innerHTML = `<h1>Las 22 letras</h1>
-      <p>Las letras resaltadas son las que ya has aprendido. Correspondencias de la Golden Dawn, el sistema de tu Rider-Waite.</p>
+      <p>Las letras resaltadas son las que ya has aprendido. Correspondencias de la Golden Dawn, el sistema de tu Rider-Waite; en las siete dobles se indica también el planeta del Séfer Yetsirá en la versión del Gra (lección 4, sección 5).</p>
       <div class="letras">${C.letras.map(l => `
         <div class="letra-card ${l.leccion ? "aprendida" : ""}">
           <div class="glifo">${l.l}</div>
           <div class="nombre">${l.nombre} · ${l.valor} ${AUDIO.boton(l.he, l.nombre, "Escuchar " + l.nombre)}</div>
           <div class="det">${l.significado} · ${l.tipo}</div>
           <div class="det">${l.astro} · ${l.arcano}</div>
+          ${l.sy ? `<div class="det">Séfer Yetsirá (Gra): ${l.sy}</div>` : ""}
           ${l.leccion ? `<div class="det">Lección ${l.leccion}</div>` : ""}
         </div>`).join("")}</div>
       <p class="aviso" id="aviso-voz"></p>
