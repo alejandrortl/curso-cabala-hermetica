@@ -314,3 +314,41 @@ h2 { scroll-margin-top: 4.5rem; }
 .lista-lecciones a { text-decoration: none; display: inline; }
 .lista-lecciones a:hover { text-decoration: underline; }
 .lista-lecciones .num { font-weight: 600; margin-right: .4rem; }
+
+/* Glosario: términos pulsables y ventana explicativa */
+button.termino { font: inherit; color: inherit; background: none; border: 0; padding: 0; margin: 0; cursor: pointer;
+  text-align: inherit; line-height: inherit; text-decoration: underline dotted var(--oro); text-decoration-thickness: 1.5px;
+  text-underline-offset: .2em; border-radius: 2px; }
+button.termino:hover, button.termino[aria-expanded="true"] { color: var(--acento); text-decoration-style: solid; }
+button.termino:focus-visible { outline: 2px solid var(--acento); outline-offset: 2px; }
+.glosa { position: absolute; z-index: 40; width: min(360px, calc(100vw - 32px)); background: var(--papel); color: var(--tinta);
+  border: 1px solid var(--borde); border-top: 3px solid var(--oro); border-radius: 8px; padding: .6rem .9rem .7rem;
+  box-shadow: 0 8px 30px rgba(0,0,0,.25); font-size: .92rem; line-height: 1.5; }
+.glosa[hidden] { display: none; }
+.glosa:focus { outline: none; }
+.glosa p { margin: .35rem 0; }
+.glosa .g-cab { display: flex; justify-content: space-between; align-items: baseline; gap: .5rem; }
+.glosa .g-cab strong { color: var(--oro); font-size: 1.05rem; }
+.glosa .g-cerrar { background: none; border: 0; font: inherit; color: var(--suave); cursor: pointer; padding: .1rem .3rem; }
+.glosa .g-lec { color: var(--suave); font-size: .85rem; }
+.glosa .g-todo { font-size: .85rem; }
+@media (max-width: 640px) {
+  .glosa { position: fixed; left: 0 !important; right: 0; bottom: 0; top: auto !important; width: 100%;
+    max-height: 55vh; overflow: auto; border-radius: 12px 12px 0 0; padding: .8rem 16px 1.2rem;
+    border-left: 0; border-right: 0; border-bottom: 0; box-shadow: 0 -8px 30px rgba(0,0,0,.3); }
+}
+.glosario { margin: 1rem 0; }
+.glosario .g-letra { font-family: "Frank Ruhl Libre", serif; color: var(--oro); font-size: 1.4rem; font-weight: 700;
+  border-bottom: 1px solid var(--borde); margin: 1.4rem 0 .4rem; }
+.glosario .g-entrada { padding: .35rem 0; }
+.glosario dt { font-weight: 600; }
+.glosario dd { margin: 0 0 0 1rem; }
+.glosario .g-l { font-size: .85rem; color: var(--suave); white-space: nowrap; }
+.glosario [hidden] { display: none; }
+.glosario .g-entrada.destacado { background: var(--papel); border-left: 3px solid var(--oro); padding-left: .6rem; margin-left: -.6rem; }
+/* Pantallas medianas: el menú pasa a su propia fila para no desbordar la cabecera */
+@media (min-width: 641px) and (max-width: 1060px) {
+  .cabecera { flex-wrap: wrap; row-gap: .3rem; }
+  .tam { order: 2; }
+  .menu { order: 3; width: 100%; flex-wrap: wrap; gap: .2rem 1rem; }
+}
