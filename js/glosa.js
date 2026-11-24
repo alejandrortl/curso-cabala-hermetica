@@ -19,7 +19,7 @@ window.GLOSA = (function () {
   const busca = txt => exactas.get(txt) || sinCaso.get(norm(txt));
 
   // Dentro de estos elementos no se marca nada.
-  const FUERA = "h1,h2,h3,h4,a,button,label,summary,textarea,input,select,svg,code,.heb,[data-decir],.etiqueta,.credito,.info,.meditacion,figure.interactivo,.no-glosa,.termino,.tabla th";
+  const FUERA = "h1,h2,h3,h4,a,button,label,summary,textarea,input,select,svg,code,.heb,[data-decir],.etiqueta,.credito,.info,.meditacion,figure.interactivo,.no-glosa,.termino,.carta-t,.tabla th";
 
   function boton(id, texto) {
     const b = document.createElement("button");

@@ -1,6 +1,6 @@
 // Service worker: guarda la web en el dispositivo para poder estudiar sin conexión.
 // La lista de archivos se regenera con: python3 herramientas/actualizar-offline.py
-const VERSION = "54c70a156b";
+const VERSION = "22e54ab69e";
 const CACHE = `qabalah-${VERSION}`;
 const FUENTES = "qabalah-fuentes";
 const ARCHIVOS = [
@@ -11,6 +11,8 @@ const ARCHIVOS = [
   "css/estilo.css",
   "js/app.js",
   "js/audio.js",
+  "js/cartas-visor.js",
+  "js/cartas.js",
   "js/datos.js",
   "js/glosa.js",
   "js/glosario.js",
@@ -21,6 +23,28 @@ const ARCHIVOS = [
   "lecciones/leccion-4.html",
   "lecciones/leccion-5.html",
   "rituales/consagracion.html",
+  "imagenes/arcanos/grandes/rws-00.webp",
+  "imagenes/arcanos/grandes/rws-01.webp",
+  "imagenes/arcanos/grandes/rws-02.webp",
+  "imagenes/arcanos/grandes/rws-03.webp",
+  "imagenes/arcanos/grandes/rws-04.webp",
+  "imagenes/arcanos/grandes/rws-05.webp",
+  "imagenes/arcanos/grandes/rws-06.webp",
+  "imagenes/arcanos/grandes/rws-07.webp",
+  "imagenes/arcanos/grandes/rws-08.webp",
+  "imagenes/arcanos/grandes/rws-09.webp",
+  "imagenes/arcanos/grandes/rws-10.webp",
+  "imagenes/arcanos/grandes/rws-11.webp",
+  "imagenes/arcanos/grandes/rws-12.webp",
+  "imagenes/arcanos/grandes/rws-13.webp",
+  "imagenes/arcanos/grandes/rws-14.webp",
+  "imagenes/arcanos/grandes/rws-15.webp",
+  "imagenes/arcanos/grandes/rws-16.webp",
+  "imagenes/arcanos/grandes/rws-17.webp",
+  "imagenes/arcanos/grandes/rws-18.webp",
+  "imagenes/arcanos/grandes/rws-19.webp",
+  "imagenes/arcanos/grandes/rws-20.webp",
+  "imagenes/arcanos/grandes/rws-21.webp",
   "imagenes/arcanos/rws-00.webp",
   "imagenes/arcanos/rws-01.webp",
   "imagenes/arcanos/rws-02.webp",
@@ -81,13 +105,15 @@ const ARCHIVOS = [
   "iconos/icono-32.png",
   "iconos/icono-512.png",
   "iconos/icono.svg",
-  "css/estilo.css?v=17",
-  "js/app.js?v=17",
-  "js/audio.js?v=17",
-  "js/datos.js?v=17",
-  "js/glosa.js?v=17",
-  "js/glosario.js?v=17",
-  "js/meditacion.js?v=17"
+  "css/estilo.css?v=18",
+  "js/app.js?v=18",
+  "js/audio.js?v=18",
+  "js/cartas-visor.js?v=18",
+  "js/cartas.js?v=18",
+  "js/datos.js?v=18",
+  "js/glosa.js?v=18",
+  "js/glosario.js?v=18",
+  "js/meditacion.js?v=18"
   // FIN-LISTA
 ];
 
