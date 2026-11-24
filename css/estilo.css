@@ -484,3 +484,29 @@ html.visor-abierto { overflow: hidden; }
 .galeria .g-letra { position: absolute; top: 4px; right: 4px; background: var(--papel); color: var(--oro); border-radius: 50%;
   width: 1.6rem; height: 1.6rem; line-height: 1.6rem; font-size: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,.3); }
 @media (prefers-reduced-motion: reduce) { .galeria img { transition: none; } }
+
+/* ── Lección 6: arcanos menores ── */
+.arbol-menores .palo-g { display: none; }
+.arbol-menores[data-modo="bastos"] .p-bastos, .arbol-menores[data-modo="copas"] .p-copas,
+.arbol-menores[data-modo="espadas"] .p-espadas, .arbol-menores[data-modo="oros"] .p-oros { display: inline; }
+.arbol-menores-svg .carta-n { cursor: pointer; outline: none; }
+.arbol-menores-svg .carta-n .marco { stroke: var(--borde); stroke-width: 1; }
+.arbol-menores-svg .carta-n:hover .marco, .arbol-menores-svg .carta-n:focus-visible .marco { stroke: var(--acento); stroke-width: 3; }
+.arbol-menores-svg .carta-n.sel .marco { stroke: var(--acento); stroke-width: 5; }
+.rueda-decanatos .dec { cursor: pointer; outline: none; }
+.rueda-decanatos .dec text { pointer-events: none; }
+.rueda-decanatos .dec:hover path.aro, .rueda-decanatos .dec:focus-visible path.aro { fill-opacity: .25 !important; stroke: var(--acento); stroke-width: 2; }
+.rueda-decanatos .dec.sel path.aro { fill-opacity: .4 !important; stroke: var(--acento); stroke-width: 3; }
+.diagrama.nombre-palos text.np-letra { font-family: "Frank Ruhl Libre", serif; font-weight: 700; }
+.tabla .peq, table .peq { font-size: .82rem; color: var(--suave); }
+.rejilla-corte { border-collapse: collapse; width: 100%; }
+.rejilla-corte th { font-size: .88rem; padding: .3rem; vertical-align: middle; }
+.rejilla-corte td { padding: .25rem; text-align: center; }
+.rejilla-corte .carta-c { display: flex; flex-direction: column; align-items: center; gap: .2rem; width: 100%; padding: .3rem .2rem;
+  background: var(--fondo); border: 2px solid var(--borde); border-radius: 6px; cursor: pointer; font: inherit; font-size: .78rem; color: var(--tinta); line-height: 1.2; }
+.rejilla-corte .carta-c img { width: 46px; height: auto; border-radius: 3px; box-shadow: 0 1px 3px rgba(0,0,0,.25); }
+.rejilla-corte .carta-c:hover, .rejilla-corte .carta-c:focus-visible { outline: 2px solid var(--acento); }
+.rejilla-corte .carta-c.sel { background: var(--papel); outline: 3px solid var(--acento); }
+@media (max-width: 520px) { .rejilla-corte .carta-c span { display: none; } .rejilla-corte .carta-c img { width: 40px; } .rejilla-corte th { font-size: .74rem; } }
+.arbol-menores .vistas { flex-wrap: wrap; }
+@media (max-width: 520px) { .arbol-menores .vistas button { padding: .35rem .7rem; } }
