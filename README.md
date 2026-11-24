@@ -10,3 +10,5 @@ No necesita compilación: GitHub Pages sirve directamente `index.html`.
 
 El progreso y el diario se guardan en el navegador (localStorage); el diario se puede exportar.
 Los libros de consulta no se incluyen por derechos de autor; las lecciones citan libro y capítulo.
+
+**Sin conexión.** `sw.js` (service worker) guarda en el dispositivo todas las lecciones, rituales, imágenes y scripts la primera vez que se abre la web; después funciona sin internet, y el pie de página avisa cuando se está usando la copia guardada. Al añadir una lección, un ritual o una imagen, ejecuta `python3 herramientas/actualizar-offline.py` para regenerar la lista de archivos y la versión de la caché.
