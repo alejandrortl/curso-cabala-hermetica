@@ -1,0 +1,62 @@
+# Copia de seguridad de la web del curso en el alxserver de Alex.
+# Se ejecuta en cada cambio de main, cada domingo y a mano (Actions → «Copia en alxserver» → Run workflow).
+# Necesita estos secretos del repositorio (Settings → Secrets and variables → Actions):
+#   ALX_HOST     nombre o IP del servidor
+#   ALX_USER     usuario SSH
+#   ALX_SSH_KEY  clave privada SSH (la pública va en ~/.ssh/authorized_keys del servidor)
+#   ALX_PATH     carpeta de destino, por ejemplo /home/alex/copias/curso-cabala
+#   ALX_PORT     (opcional) puerto SSH, 22 si no se pone
+# Mientras falten, el trabajo termina sin hacer nada.
+name: Copia en alxserver
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "0 3 * * 0"
+  workflow_dispatch:
+
+jobs:
+  copia:
+    runs-on: ubuntu-latest
+    env:
+      ALX_HOST: ${{ secrets.ALX_HOST }}
+      ALX_USER: ${{ secrets.ALX_USER }}
+      ALX_PATH: ${{ secrets.ALX_PATH }}
+      ALX_PORT: ${{ secrets.ALX_PORT || '22' }}
+    steps:
+      - name: Comprobar configuración
+        id: conf
+        run: |
+          if [ -z "$ALX_HOST" ] || [ -z "$ALX_USER" ] || [ -z "$ALX_PATH" ]; then
+            echo "Faltan los secretos ALX_*: no se hace copia."; echo "listo=no" >> "$GITHUB_OUTPUT"
+          else
+            echo "listo=si" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.conf.outputs.listo == 'si'
+        with:
+          fetch-depth: 0
+
+      - name: Preparar SSH
+        if: steps.conf.outputs.listo == 'si'
+        env:
+          ALX_SSH_KEY: ${{ secrets.ALX_SSH_KEY }}
+        run: |
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          printf '%s\n' "$ALX_SSH_KEY" > ~/.ssh/alx && chmod 600 ~/.ssh/alx
+          ssh-keyscan -p "$ALX_PORT" "$ALX_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: Copiar la web y un archivo con fecha
+        if: steps.conf.outputs.listo == 'si'
+        run: |
+          fecha=$(date -u +%Y-%m-%d_%H%M)
+          git bundle create "curso-cabala-$fecha.bundle" --all
+          ssh -i ~/.ssh/alx -p "$ALX_PORT" "$ALX_USER@$ALX_HOST" "mkdir -p '$ALX_PATH/web' '$ALX_PATH/historial'"
+          # Copia navegable de la web, siempre la última versión.
+          rsync -az --delete --exclude .git -e "ssh -i ~/.ssh/alx -p $ALX_PORT" ./ "$ALX_USER@$ALX_HOST:$ALX_PATH/web/"
+          # Historial completo del repositorio (se restaura con: git clone archivo.bundle).
+          rsync -az -e "ssh -i ~/.ssh/alx -p $ALX_PORT" "curso-cabala-$fecha.bundle" "$ALX_USER@$ALX_HOST:$ALX_PATH/historial/"
+          # Conserva solo los 30 últimos.
+          ssh -i ~/.ssh/alx -p "$ALX_PORT" "$ALX_USER@$ALX_HOST" "cd '$ALX_PATH/historial' && ls -1t *.bundle | tail -n +31 | xargs -r rm --"
