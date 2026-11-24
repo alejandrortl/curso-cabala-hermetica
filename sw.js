@@ -1,6 +1,6 @@
 // Service worker: guarda la web en el dispositivo para poder estudiar sin conexión.
 // La lista de archivos se regenera con: python3 herramientas/actualizar-offline.py
-const VERSION = "e49a5dd21c";
+const VERSION = "54c70a156b";
 const CACHE = `qabalah-${VERSION}`;
 const FUENTES = "qabalah-fuentes";
 const ARCHIVOS = [
@@ -19,7 +19,30 @@ const ARCHIVOS = [
   "lecciones/leccion-2.html",
   "lecciones/leccion-3.html",
   "lecciones/leccion-4.html",
+  "lecciones/leccion-5.html",
   "rituales/consagracion.html",
+  "imagenes/arcanos/rws-00.webp",
+  "imagenes/arcanos/rws-01.webp",
+  "imagenes/arcanos/rws-02.webp",
+  "imagenes/arcanos/rws-03.webp",
+  "imagenes/arcanos/rws-04.webp",
+  "imagenes/arcanos/rws-05.webp",
+  "imagenes/arcanos/rws-06.webp",
+  "imagenes/arcanos/rws-07.webp",
+  "imagenes/arcanos/rws-08.webp",
+  "imagenes/arcanos/rws-09.webp",
+  "imagenes/arcanos/rws-10.webp",
+  "imagenes/arcanos/rws-11.webp",
+  "imagenes/arcanos/rws-12.webp",
+  "imagenes/arcanos/rws-13.webp",
+  "imagenes/arcanos/rws-14.webp",
+  "imagenes/arcanos/rws-15.webp",
+  "imagenes/arcanos/rws-16.webp",
+  "imagenes/arcanos/rws-17.webp",
+  "imagenes/arcanos/rws-18.webp",
+  "imagenes/arcanos/rws-19.webp",
+  "imagenes/arcanos/rws-20.webp",
+  "imagenes/arcanos/rws-21.webp",
   "imagenes/leccion1-columnas.webp",
   "imagenes/leccion1-golden-dawn.webp",
   "imagenes/leccion1-ricius.webp",
@@ -51,18 +74,20 @@ const ARCHIVOS = [
   "imagenes/leccion4-helmont-alef.webp",
   "imagenes/leccion4-siloe.webp",
   "imagenes/leccion4-vibracion.webp",
+  "imagenes/leccion5-ani-juicio.webp",
+  "imagenes/leccion5-gebelin.webp",
   "iconos/icono-180.png",
   "iconos/icono-192.png",
   "iconos/icono-32.png",
   "iconos/icono-512.png",
   "iconos/icono.svg",
-  "css/estilo.css?v=16",
-  "js/app.js?v=16",
-  "js/audio.js?v=16",
-  "js/datos.js?v=16",
-  "js/glosa.js?v=16",
-  "js/glosario.js?v=16",
-  "js/meditacion.js?v=16"
+  "css/estilo.css?v=17",
+  "js/app.js?v=17",
+  "js/audio.js?v=17",
+  "js/datos.js?v=17",
+  "js/glosa.js?v=17",
+  "js/glosario.js?v=17",
+  "js/meditacion.js?v=17"
   // FIN-LISTA
 ];
 
