@@ -25,6 +25,7 @@
           ${sig ? `<a href="#/leccion/${sig.n}">Continuar con la lección ${sig.n}</a>` : ""}</div>
         <div class="tarjeta"><h3>Letras</h3><p class="heb" style="font-size:1.6rem">${C.letras.filter(l => l.leccion).map(l => l.l).join(" ")}</p>
           <p>${aprendidas} de 22 aprendidas</p><a href="#/letras">Ver alfabeto</a></div>
+        <div class="tarjeta"><h3>Cartas</h3><p>Los 22 arcanos mayores de la Rider-Waite, para verlos al momento.</p><a href="#/cartas">Ver las cartas</a></div>
         <div class="tarjeta"><h3>Rituales</h3><p>Antes del primer uso de las cartas: consagración de la baraja.</p><a href="#/ritual/consagracion">Ver el ritual</a> · <a href="#/rituales">Materiales</a></div>
         <div class="tarjeta"><h3>Diario</h3><p>${guarda.leer("diario", []).length} entradas</p><a href="#/diario">Escribir</a></div>
       </div>`;
@@ -68,6 +69,7 @@
 
   // Tras cargar una página de contenido: audio de las palabras, reproductores y animaciones.
   function prepara(seccionN, leccionN) {
+    VISOR.marca(app); // antes que el glosario: «El Sol» es la carta, no el astro
     GLOSA.marca(app, leccionN);
     const h2s = [...app.querySelectorAll("h2")];
     document.querySelectorAll(".indice-flot, .indice-panel").forEach(e => e.remove());
@@ -365,12 +367,13 @@
     document.getElementById("menu").classList.remove("abierto");
     if (seccion === "lecciones") lecciones();
     else if (seccion === "leccion") leccion(parseInt(arg, 10), parseInt(h.split("/")[2], 10) || 0);
-    else if (seccion === "letras") letras();
+    else if (seccion === "letras") { letras(); VISOR.marca(app); }
     else if (seccion === "rituales") rituales();
     else if (seccion === "ritual") ritual(arg, parseInt(h.split("/")[2], 10) || 0);
     else if (seccion === "indice") indice();
     else if (seccion === "cronologia") cronologia();
-    else if (seccion === "glosario") GLOSA.pagina(app, arg);
+    else if (seccion === "cartas") VISOR.pagina(app, arg);
+    else if (seccion === "glosario") { GLOSA.pagina(app, arg); VISOR.marca(app); }
     else if (seccion === "diario") diario();
     else inicio();
   }
