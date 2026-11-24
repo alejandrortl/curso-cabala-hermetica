@@ -5,7 +5,7 @@ window.CURSO = {
     { n: 2, titulo: "Del Kybalión a la Cábala: de dónde sale todo", disponible: true },
     { n: 3, titulo: "El Árbol de la Vida y la geometría sagrada", disponible: true },
     { n: 4, titulo: "Las 22 letras hebreas a fondo", disponible: true },
-    { n: 5, titulo: "Los 22 senderos y los Arcanos Mayores", disponible: false },
+    { n: 5, titulo: "Los 22 senderos y los Arcanos Mayores", disponible: true },
     { n: 6, titulo: "Los Arcanos Menores", disponible: false },
     { n: 7, titulo: "Numerología y gematría", disponible: false },
     { n: 8, titulo: "Astrología cabalística, simbolismo y religión comparada", disponible: false },
@@ -140,6 +140,38 @@ window.CURSO = {
         { texto: "Deja que las letras se disuelvan en luz. Respira con normalidad.", pausa: 30 },
         { texto: "Haz la Cruz Cabalística, mueve las manos y los pies y abre los ojos. Come o bebe algo antes de seguir con tu día.", pausa: 10 }
       ] },
+    { id: "renacer", leccion: 5, titulo: "Muerte y renacimiento: la Muerte y el Juicio", resumen: "Unos 12 minutos. Sentado. Antes, escribe en un papel una cosa que quieras dejar atrás.",
+      pasos: [
+        { texto: "Siéntate con la espalda recta y los pies en el suelo. Deja a tu lado el papel que has escrito. Cierra los ojos y haz la Cruz Cabalística, en voz baja o solo con la imaginación.", pausa: 35 },
+        { texto: "Respira despacio: inspira contando hasta cuatro, retén dos, espira contando hasta cuatro. Con cada espiración, deja que el cuerpo pese un poco más.", pausa: 45 },
+        { texto: "Imagina ante ti la carta trece, La Muerte, del tamaño de una puerta. Ves el caballo blanco, el estandarte negro con la rosa blanca y, al fondo, el sol entre dos torres.", pausa: 35 },
+        { texto: "Sobre la carta brilla la letra Nun, en verde azulado. Atraviesa la puerta. Estás en una llanura junto a un río ancho y lento.", pausa: 30 },
+        { texto: "Trae a la mente lo que escribiste en el papel. Míralo con calma, sin juzgarlo. Ha cumplido su función en tu vida. Dale las gracias.", pausa: 45 },
+        { texto: "Ahora déjalo en una barca pequeña, en la orilla, y empújala con suavidad. Mira cómo el río se la lleva despacio hasta que desaparece.", pausa: 50 },
+        { texto: "Levanta la vista. Entre las dos torres, el sol empieza a salir. Siente su primera luz en la cara. Algo ha terminado; algo empieza.", pausa: 40 },
+        { texto: "Se oye una trompeta, clara y lejana. Es la carta veinte, El Juicio. Sobre ti aparece la letra Shin, como tres llamas de fuego rojo y dorado.", pausa: 30 },
+        { texto: "El sonido te llama a levantarte. Imagina que te pones en pie, con los brazos abiertos, más ligero, como las figuras de la carta que se alzan de sus ataúdes.", pausa: 45 },
+        { texto: "Pregúntate: qué quiero que ocupe el lugar de lo que he soltado. No busques una respuesta grande. Deja que llegue una imagen o una palabra.", pausa: 60 },
+        { texto: "Vuelve por la misma puerta. La carta se hace pequeña y desaparece. Siente de nuevo la silla, el suelo, el peso del cuerpo.", pausa: 30 },
+        { texto: "Haz la Cruz Cabalística. Abre los ojos. Rompe el papel en trozos pequeños y tíralo. Anota en el diario la imagen o la palabra que llegó.", pausa: 10 }
+      ] },
+    { id: "sendero32", leccion: 5, titulo: "Viaje por el sendero 32: de Maljut a Yesod", resumen: "Unos 15 minutos. Sentado. Haz antes el LBRP y ten a mano la carta XXI El Mundo.",
+      pasos: [
+        { texto: "Has hecho el LBRP. Mira un momento la carta del Mundo, déjala delante de ti y siéntate con la espalda recta. Cierra los ojos.", pausa: 30 },
+        { texto: "Respira despacio, cuatro tiempos al inspirar, dos de pausa, cuatro al espirar. Siente el peso del cuerpo en la silla y los pies en el suelo.", pausa: 45 },
+        { texto: "Imagina que estás en una sala de piedra, sencilla y tranquila. El suelo está dividido en cuatro colores: citrino, oliva, rojizo y negro. Es el templo de Maljut, el mundo físico.", pausa: 40 },
+        { texto: "Vibra el nombre de Maljut: Adonái ha-Árets. Siente cómo el nombre llena la sala.", pausa: 25 },
+        { texto: "En la pared de enfrente, al este, hay una cortina de color índigo, casi negro. En ella está bordada la letra Tav, en blanco. Acércate.", pausa: 30 },
+        { texto: "Sobre la cortina aparece la carta del Mundo: la figura que danza dentro de la corona de laurel. Traza con la mano, en el aire, la letra Tav, y la cortina se abre.", pausa: 30 },
+        { texto: "Delante de ti empieza un camino que sube suavemente, de color índigo. Es el sendero treinta y dos. Empieza a caminar, despacio.", pausa: 30 },
+        { texto: "Observa lo que hay a los lados del camino. No busques nada: deja que aparezca lo que aparezca. Si no aparece nada, sigue caminando y fíjate en el color, en la luz, en el silencio.", pausa: 75 },
+        { texto: "El camino se ilumina poco a poco con una luz violeta. Delante, al final, ves una gran puerta, y sobre ella una luna creciente plateada. Es la puerta de Yesod, el Fundamento.", pausa: 35 },
+        { texto: "Detente ante la puerta. No entres. Vibra el nombre de Yesod: Shadái El Jai. Quédate un momento mirando la luna y escuchando.", pausa: 45 },
+        { texto: "Ahora da la vuelta y regresa por el mismo camino, sin prisa. El índigo te rodea de nuevo.", pausa: 40 },
+        { texto: "Llegas a la cortina con la letra Tav. Pasa por ella y ciérrala detrás de ti. Estás otra vez en el templo de los cuatro colores. Siente el suelo bajo tus pies.", pausa: 30 },
+        { texto: "Deja que la sala se desvanezca. Siente la silla, el cuerpo, la respiración. Mueve los dedos de las manos y de los pies.", pausa: 25 },
+        { texto: "Abre los ojos. Haz el LBRP de cierre, anota en el diario todo lo que viste, aunque sea poco, y come o bebe algo antes de seguir con tu día.", pausa: 10 }
+      ] },
     { id: "consagracion", ritual: "consagracion", titulo: "Consagración de la baraja guiada", resumen: "Unos 30 minutos. De pie ante el altar, mirando al Este.",
       pasos: [
         { texto: "Bienvenido a la consagración de tu baraja. Comprueba que el altar está preparado: el incienso al Este, la vela al Sur, la copa de agua al Oeste y la sal al Norte. En el centro, los cinco montones de cartas y el paño de seda.", pausa: 20 },
@@ -176,6 +208,7 @@ window.CURSO = {
   // tipo: judia | cristiana | hermetica | antigua
   cronologia: [
     { orden: -1800, fecha: "h. 1800 a. C.", tipo: "antigua", titulo: "Escritura protosinaítica", texto: "En Egipto y el Sinaí, dibujos de jeroglíficos pasan a valer por un sonido: nace el alfabeto.", leccion: 4 },
+    { orden: -1250, fecha: "h. 1250 a. C.", tipo: "antigua", titulo: "Papiro de Ani", texto: "Libro de los Muertos del escriba Ani: el peso del corazón ante Osiris.", leccion: 5 },
     { orden: -1000, fecha: "h. 1000 a. C.", tipo: "antigua", titulo: "Alfabeto fenicio y paleohebreo", texto: "22 letras, solo consonantes; de él salen el griego y el latino.", leccion: 4 },
     { orden: -700, fecha: "h. 700 a. C.", tipo: "judia", titulo: "Inscripción de Siloé", texto: "Paleohebreo en el túnel de Ezequías, en Jerusalén.", leccion: 4 },
     { orden: -530, fecha: "h. 530 a. C.", tipo: "antigua", titulo: "Pitágoras en Crotona", texto: "Su escuela trata los números como principios del cosmos: la tetractys.", leccion: 3 },
@@ -192,8 +225,11 @@ window.CURSO = {
     { orden: 1280, fecha: "1270-1291", tipo: "judia", titulo: "Abraham Abulafia", texto: "El cabalista de Zaragoza funda la Cábala profética: la combinación de letras.", leccion: 4 },
     { orden: 1285, fecha: "h. 1280-1290", tipo: "judia", titulo: "Zohar", texto: "Moisés de León, en Castilla. La obra clásica de la Cábala.", leccion: 1 },
     { orden: 1300, fecha: "h. 1300", tipo: "judia", titulo: "Tikunéi Zóhar", texto: "Su oración Pataj Eliyahu coloca las sefirot sobre el cuerpo.", leccion: 3 },
+    { orden: 1442, fecha: "1442", tipo: "cristiana", titulo: "Primeros triunfos", texto: "Las cuentas de la corte de Ferrara mencionan barajas de triunfos: nace el tarot como juego.", leccion: 5 },
+    { orden: 1455, fecha: "h. 1450-1460", tipo: "cristiana", titulo: "Tarot Visconti-Sforza", texto: "El tarot más antiguo que se conserva, pintado para los duques de Milán.", leccion: 5 },
     { orden: 1482, fecha: "1482", tipo: "judia", titulo: "Torá de Bolonia", texto: "Primera edición impresa de la Torá con todas sus vocales.", leccion: 4 },
     { orden: 1486, fecha: "1486", tipo: "cristiana", titulo: "Pico della Mirandola", texto: "Sus 900 tesis inauguran la Cábala cristiana.", leccion: 1 },
+    { orden: 1494, fecha: "1494", tipo: "cristiana", titulo: "Reuchlin, De verbo mirifico", texto: "Propone el Pentagrammaton: la Shin en medio del Tetragrámaton.", leccion: 5 },
     { orden: 1509, fecha: "1509", tipo: "antigua", titulo: "Pacioli, De divina proportione", texto: "Con los sólidos dibujados por Leonardo.", leccion: 3 },
     { orden: 1516, fecha: "1516", tipo: "cristiana", titulo: "Ricius, Portae Lucis", texto: "Uno de los primeros árboles sefiróticos impresos.", leccion: 1 },
     { orden: 1517, fecha: "1517", tipo: "cristiana", titulo: "Reuchlin, De arte cabalistica", texto: "La Cábala explicada a los humanistas cristianos.", leccion: 1 },
@@ -201,11 +237,13 @@ window.CURSO = {
     { orden: 1533, fecha: "1533", tipo: "hermetica", titulo: "Agrippa, De occulta philosophia", texto: "La gran suma de la magia renacentista; el hombre en el pentagrama.", leccion: 3 },
     { orden: 1570, fecha: "1569-1572", tipo: "judia", titulo: "Isaac Luria en Safed", texto: "Tsimtsum, rotura de los vasos, cáscaras y tikún.", leccion: 3 },
     { orden: 1596, fecha: "1596", tipo: "antigua", titulo: "Kepler, Mysterium cosmographicum", texto: "El cosmos construido con los cinco sólidos platónicos.", leccion: 3 },
+    { orden: 1650, fecha: "h. 1650", tipo: "cristiana", titulo: "Tarot de Jean Noblet", texto: "La baraja completa más antigua del tipo Marsella.", leccion: 5 },
     { orden: 1652, fecha: "1652-1654", tipo: "cristiana", titulo: "Kircher, Oedipus Aegyptiacus", texto: "Su Árbol fija la disposición de senderos que usará la Golden Dawn.", leccion: 3 },
     { orden: 1667, fecha: "1667", tipo: "cristiana", titulo: "Van Helmont, Alphabetum naturae", texto: "La forma de cada letra hebrea como dibujo de la boca que la pronuncia.", leccion: 4 },
     { orden: 1717, fecha: "1717", tipo: "hermetica", titulo: "Gran Logia de Londres", texto: "Nace la masonería especulativa moderna.", leccion: 1 },
     { orden: 1780, fecha: "1720-1797", tipo: "judia", titulo: "El Gaón de Vilna", texto: "Su versión del Séfer Yetsirá es la que siguen las ediciones modernas.", leccion: 4 },
     { orden: 1781, fecha: "1781", tipo: "hermetica", titulo: "Court de Gébelin y Mellet", texto: "Primer vínculo entre el tarot y las letras hebreas.", leccion: 1 },
+    { orden: 1789, fecha: "h. 1789", tipo: "hermetica", titulo: "Etteilla", texto: "Primera baraja de tarot pensada para echar las cartas.", leccion: 5 },
     { orden: 1855, fecha: "1855-1856", tipo: "hermetica", titulo: "Éliphas Lévi, Dogma y ritual de la alta magia", texto: "Sistematiza letras y arcanos; el pentagrama invertido como signo maléfico.", leccion: 1 },
     { orden: 1887, fecha: "1887", tipo: "hermetica", titulo: "Mathers, Kabbalah Unveiled", texto: "Traduce partes del Zohar al inglés; incluye las Qliphoth.", leccion: 3 },
     { orden: 1888, fecha: "1888", tipo: "hermetica", titulo: "Golden Dawn", texto: "Fundada en Londres por tres masones.", leccion: 1 },
@@ -213,7 +251,8 @@ window.CURSO = {
     { orden: 1909, fecha: "1909", tipo: "hermetica", titulo: "Tarot Rider-Waite y Liber 777", texto: "La baraja de Waite y Pamela Colman Smith; las tablas de Crowley.", leccion: 1 },
     { orden: 1935, fecha: "1935", tipo: "hermetica", titulo: "Dion Fortune, La Cábala mística", texto: "El manual clásico de la Qabalah hermética.", leccion: 2 },
     { orden: 1937, fecha: "1937-1940", tipo: "hermetica", titulo: "Regardie, The Golden Dawn", texto: "Publica los rituales de la orden, entre ellos el LBRP.", leccion: 3 },
-    { orden: 1941, fecha: "1941", tipo: "judia", titulo: "Scholem, Las grandes tendencias de la mística judía", texto: "Funda el estudio académico de la Cábala.", leccion: 3 }
+    { orden: 1941, fecha: "1941", tipo: "judia", titulo: "Scholem, Las grandes tendencias de la mística judía", texto: "Funda el estudio académico de la Cábala.", leccion: 3 },
+    { orden: 1944, fecha: "1944", tipo: "hermetica", titulo: "Crowley, El libro de Thoth", texto: "Explica su baraja, pintada por Frieda Harris; cambia el Emperador y la Estrella.", leccion: 5 }
   ],
 
   materiales: [
@@ -237,7 +276,8 @@ window.CURSO = {
     { nombre: "Cierre de la etapa 1", cuando: "Una vez, al terminar la lección 3", materiales: "Vela y diario", estado: "Disponible en la lección 3", enlace: "#/leccion/3/17" },
     { nombre: "Vibración de los nombres divinos", cuando: "Dentro del LBRP y en meditación", materiales: "Ninguno", estado: "Disponible en la lección 4", enlace: "#/leccion/4/11" },
     { nombre: "Combinación de letras (inspirada en Abulafia)", cuando: "Dos veces por semana, máximo 15 minutos", materiales: "Silla", estado: "Disponible en la lección 4", enlace: "#/leccion/4/12" },
-    { nombre: "Apertura y cierre de una lectura", cuando: "Cada vez que uses las cartas", materiales: "Seda, tapete; vela e incienso opcionales", estado: "Lección 5" },
+    { nombre: "Apertura y cierre de una lectura", cuando: "Cada vez que uses las cartas", materiales: "Seda, tapete; vela e incienso opcionales", estado: "Disponible en la lección 5", enlace: "#/leccion/5/14" },
+    { nombre: "Viaje por el sendero 32", cuando: "Una vez por semana, entre dos LBRP", materiales: "Silla; carta XXI El Mundo", estado: "Disponible en la lección 5", enlace: "#/leccion/5/13" },
     { nombre: "Pilar Medio", cuando: "Lección 10", materiales: "Silla de respaldo recto", estado: "Lección 10" },
     { nombre: "Ritual del Hexagrama", cuando: "Lección 10", materiales: "Brújula; daga opcional", estado: "Lección 10" }
   ]
