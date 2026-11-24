@@ -1,6 +1,6 @@
 // Service worker: guarda la web en el dispositivo para poder estudiar sin conexión.
 // La lista de archivos se regenera con: python3 herramientas/actualizar-offline.py
-const VERSION = "22e54ab69e";
+const VERSION = "a9d72ee169";
 const CACHE = `qabalah-${VERSION}`;
 const FUENTES = "qabalah-fuentes";
 const ARCHIVOS = [
@@ -100,6 +100,8 @@ const ARCHIVOS = [
   "imagenes/leccion4-vibracion.webp",
   "imagenes/leccion5-ani-juicio.webp",
   "imagenes/leccion5-gebelin.webp",
+  "imagenes/leccion5-sendero.webp",
+  "imagenes/leccion5-serpiente.webp",
   "iconos/icono-180.png",
   "iconos/icono-192.png",
   "iconos/icono-32.png",
