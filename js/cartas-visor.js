@@ -192,7 +192,8 @@ window.VISOR = (function () {
       ${grupo("Arcanos mayores", D.mayores, "Las 22 cartas con figura y número romano. Cada una corresponde a una letra hebrea y a un sendero del Árbol de la Vida (lección 5).")}
       ${Object.keys(D.palos).map(p => {
         const cs = menores.filter(c => c.palo === p);
-        return cs.length ? grupo(`Arcanos menores: ${D.palos[p]}`, cs) : "";
+        const txt = { bastos: "El fuego: la letra Yod y el mundo de Atsilut.", copas: "El agua: la primera He y el mundo de Beriá.", espadas: "El aire: la Vav y el mundo de Yetsirá.", oros: "La tierra: la He final y el mundo de Asiá." }[p] || "";
+        return cs.length ? grupo(`Arcanos menores: ${D.palos[p]}`, cs, txt ? `${txt} Del As al Diez, las diez sefirot; después, las cuatro figuras de la corte (lección 6).` : "") : "";
       }).join("")}
       ${menores.length ? "" : `<p class="aviso">Los 56 arcanos menores llegarán con la lección 6.</p>`}`;
     window.scrollTo(0, 0);
