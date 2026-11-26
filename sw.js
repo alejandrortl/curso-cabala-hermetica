@@ -1,6 +1,6 @@
 // Service worker: guarda la web en el dispositivo para poder estudiar sin conexión.
 // La lista de archivos se regenera con: python3 herramientas/actualizar-offline.py
-const VERSION = "d3241fc93a";
+const VERSION = "dbc7a33567";
 const CACHE = `qabalah-${VERSION}`;
 const FUENTES = "qabalah-fuentes";
 const ARCHIVOS = [
@@ -23,6 +23,7 @@ const ARCHIVOS = [
   "lecciones/leccion-4.html",
   "lecciones/leccion-5.html",
   "lecciones/leccion-6.html",
+  "lecturas/osiris-x-numeros.html",
   "rituales/consagracion.html",
   "imagenes/arcanos/grandes/rws-00.webp",
   "imagenes/arcanos/grandes/rws-01.webp",
@@ -217,20 +218,21 @@ const ARCHIVOS = [
   "imagenes/leccion5-serpiente.webp",
   "imagenes/leccion6-ases.webp",
   "imagenes/leccion6-palos.webp",
+  "imagenes/lectura-kircher-dioses.webp",
   "iconos/icono-180.png",
   "iconos/icono-192.png",
   "iconos/icono-32.png",
   "iconos/icono-512.png",
   "iconos/icono.svg",
-  "css/estilo.css?v=19",
-  "js/app.js?v=19",
-  "js/audio.js?v=19",
-  "js/cartas-visor.js?v=19",
-  "js/cartas.js?v=19",
-  "js/datos.js?v=19",
-  "js/glosa.js?v=19",
-  "js/glosario.js?v=19",
-  "js/meditacion.js?v=19"
+  "css/estilo.css?v=20",
+  "js/app.js?v=20",
+  "js/audio.js?v=20",
+  "js/cartas-visor.js?v=20",
+  "js/cartas.js?v=20",
+  "js/datos.js?v=20",
+  "js/glosa.js?v=20",
+  "js/glosario.js?v=20",
+  "js/meditacion.js?v=20"
   // FIN-LISTA
 ];
 

@@ -4,6 +4,7 @@ Web estática del curso: lecciones, alfabeto hebreo con gematría, rituales y di
 No necesita compilación: GitHub Pages sirve directamente `index.html`.
 
 - `lecciones/leccion-N.html`: texto de cada lección.
+- `lecturas/<id>.html`: lecturas complementarias, textos sueltos que no son una lección (se listan en `CURSO.lecturas` y se abren en `#/lectura/<id>`).
 - `js/datos.js`: lista de lecciones, 22 letras, materiales y rituales.
 - `js/glosario.js`: términos clave con su explicación breve. La web los marca sola en lecciones y rituales (subrayado punteado) y abre una ventana al tocarlos; la página `#/glosario` los lista todos. Para una lección nueva basta con añadir aquí sus términos. En el HTML, `<span data-glosa="id">` marca un texto a mano y `class="no-glosa"` evita que se marque nada dentro.
 - `imagenes/`: ilustraciones generadas con IA (ver `prompts/`) y obras de arte de dominio público o con licencia libre, descargadas de Internet Archive, Wellcome Collection y Web Gallery of Art. Cada obra lleva en su pie autor, fecha, enlace a la fuente y licencia.
@@ -11,4 +12,4 @@ No necesita compilación: GitHub Pages sirve directamente `index.html`.
 El progreso y el diario se guardan en el navegador (localStorage); el diario se puede exportar.
 Los libros de consulta no se incluyen por derechos de autor; las lecciones citan libro y capítulo.
 
-**Sin conexión.** `sw.js` (service worker) guarda en el dispositivo todas las lecciones, rituales, imágenes y scripts la primera vez que se abre la web; después funciona sin internet, y el pie de página avisa cuando se está usando la copia guardada. Al añadir una lección, un ritual o una imagen, ejecuta `python3 herramientas/actualizar-offline.py` para regenerar la lista de archivos y la versión de la caché.
+**Sin conexión.** `sw.js` (service worker) guarda en el dispositivo todas las lecciones, rituales, imágenes y scripts la primera vez que se abre la web; después funciona sin internet, y el pie de página avisa cuando se está usando la copia guardada. Al añadir una lección, una lectura, un ritual o una imagen, ejecuta `python3 herramientas/actualizar-offline.py` para regenerar la lista de archivos y la versión de la caché.
