@@ -222,11 +222,6 @@ window.CURSO = {
       ] }
   ],
 
-  // Lecturas complementarias (#/lectura/<id>): textos sueltos en /lecturas/<id>.html.
-  // despues: lección tras la que conviene leerla.
-  lecturas: [
-    { id: "osiris-x-numeros", titulo: "Osiris, la X y los números sagrados", despues: 6, resumen: "INRI, IAO y LVX; los números 3, 13, 14, 19, 21, 40 y 666; el cuadrado mágico del Sol y la tabla de dioses de Kircher." }
-  ],
   // Línea del tiempo (#/cronologia): solo se muestran las entradas de lecciones ya disponibles.
   // tipo: judia | cristiana | hermetica | antigua
   cronologia: [

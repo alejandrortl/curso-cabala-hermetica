@@ -27,7 +27,6 @@
           <p>${aprendidas} de 22 aprendidas</p><a href="#/letras">Ver alfabeto</a></div>
         <div class="tarjeta"><h3>Cartas</h3><p>Los 22 arcanos mayores de la Rider-Waite, para verlos al momento.</p><a href="#/cartas">Ver las cartas</a></div>
         <div class="tarjeta"><h3>Rituales</h3><p>Antes del primer uso de las cartas: consagración de la baraja.</p><a href="#/ritual/consagracion">Ver el ritual</a> · <a href="#/rituales">Materiales</a></div>
-        ${(C.lecturas || []).map(l => `<div class="tarjeta"><h3>Lectura complementaria</h3><p>${esc(l.titulo)}. ${esc(l.resumen)}</p><a href="#/lectura/${l.id}">Leer</a></div>`).join("")}
         <div class="tarjeta"><h3>Diario</h3><p>${guarda.leer("diario", []).length} entradas</p><a href="#/diario">Escribir</a></div>
       </div>`;
   }
@@ -189,7 +188,6 @@
     const disp = C.lecciones.filter(l => l.disponible);
     const hs = await Promise.all(disp.map(l => secciones(`lecciones/leccion-${l.n}.html`)));
     const rit = await secciones("rituales/consagracion.html");
-    const lec = await Promise.all((C.lecturas || []).map(l => secciones(`lecturas/${l.id}.html`)));
     const hechas = guarda.leer("lecciones-hechas", []);
     app.innerHTML = `<h1>Índice del curso</h1>
       <h2>Lecciones</h2>
@@ -198,8 +196,6 @@
         return `<details ${k >= 0 ? "open" : ""} class="${k >= 0 ? "" : "futura"}"><summary>${l.n}. ${esc(l.titulo)} ${hechas.includes(l.n) ? "✓" : k >= 0 ? "" : "<small>(próximamente)</small>"}</summary>
           ${k >= 0 ? `<ol>${hs[k].map((t, i) => `<li><a href="#/leccion/${l.n}/${i + 1}">${esc(t)}</a></li>`).join("")}</ol>` : ""}</details>`;
       }).join("")}</div>
-      ${(C.lecturas || []).length ? `<h2>Lecturas complementarias</h2>
-      <div class="indice-curso">${C.lecturas.map((l, k) => `<details open><summary><a href="#/lectura/${l.id}">${esc(l.titulo)}</a> <small>(después de la lección ${l.despues})</small></summary><ol>${lec[k].map((t, i) => `<li><a href="#/lectura/${l.id}/${i + 1}">${esc(t)}</a></li>`).join("")}</ol></details>`).join("")}</div>` : ""}
       <h2>Rituales</h2>
       <div class="indice-curso"><details open><summary><a href="#/ritual/consagracion">Consagración de la baraja</a></summary><ol>${rit.map((t, i) => `<li><a href="#/ritual/consagracion/${i + 1}">${esc(t)}</a></li>`).join("")}</ol></details>
       <p><a href="#/rituales">Materiales, tabla de rituales y meditaciones guiadas</a></p></div>
@@ -219,22 +215,6 @@
       prepara(seccionN);
     } catch (e) {
       app.innerHTML = `<p>No se pudo cargar el ritual (${esc(e.message)}).</p>`;
-    }
-  }
-
-  // Lecturas complementarias: páginas sueltas en /lecturas/<id>.html, listadas en CURSO.lecturas.
-  async function lectura(id, seccionN) {
-    const meta = (C.lecturas || []).find(l => l.id === id);
-    if (!meta) { indice(); return; }
-    app.innerHTML = "<p>Cargando…</p>";
-    try {
-      const r = await fetch(`lecturas/${id}.html`, { cache: "no-cache" });
-      if (!r.ok) throw new Error(r.status);
-      app.innerHTML = await r.text() + `<div class="navlec"><a href="#/indice">← Índice del curso</a>${meta.despues ? `<a href="#/leccion/${meta.despues}">Lección ${meta.despues}</a>` : "<span></span>"}</div>`;
-      app.querySelectorAll("table").forEach(t => { const d = document.createElement("div"); d.className = "tabla"; t.parentNode.insertBefore(d, t); d.appendChild(t); });
-      prepara(seccionN);
-    } catch (e) {
-      app.innerHTML = `<p>No se pudo cargar la lectura (${esc(e.message)}).</p>`;
     }
   }
 
@@ -390,7 +370,6 @@
     else if (seccion === "letras") { letras(); VISOR.marca(app); }
     else if (seccion === "rituales") rituales();
     else if (seccion === "ritual") ritual(arg, parseInt(h.split("/")[2], 10) || 0);
-    else if (seccion === "lectura") lectura(arg, parseInt(h.split("/")[2], 10) || 0);
     else if (seccion === "indice") indice();
     else if (seccion === "cronologia") cronologia();
     else if (seccion === "cartas") VISOR.pagina(app, arg);

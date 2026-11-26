@@ -2,13 +2,13 @@
 """Regenera la lista de archivos que sw.js guarda para usar la web sin conexión.
 
 Uso, desde la raíz del repositorio:  python3 herramientas/actualizar-offline.py
-Ejecútalo cada vez que añadas una lección, una lectura, un ritual o una imagen. Cambia también
+Ejecútalo cada vez que añadas una lección, un ritual o una imagen. Cambia también
 la versión de la caché, para que los navegadores descarguen la copia nueva.
 """
 import hashlib, pathlib, re
 
 raiz = pathlib.Path(__file__).resolve().parent.parent
-carpetas = ["css", "js", "lecciones", "lecturas", "rituales", "imagenes", "iconos"]
+carpetas = ["css", "js", "lecciones", "rituales", "imagenes", "iconos"]
 archivos = ["./", "index.html", "manifest.webmanifest"]
 for c in carpetas:
     for f in sorted((raiz / c).rglob("*")):
